@@ -34,3 +34,17 @@
     table_name.item_set.create(column=some_value)
 - Show all items
     table_name.item_set.all()
+- Delete entry
+    var_name.delete()
+
+### Admin Dashboard ###
+- Access dashboard
+    localhost:8000/admin
+- Create admin user
+    python3 manage.py createsuperuser
+- Enter user and password
+    email: jayhawkgo@gmail.com
+    user: JayhawkGo
+    pass: Jayhawk2022
+- Give dashboard access to our model databases (in admin.py)
+    admin.site.register(ToDoList)
