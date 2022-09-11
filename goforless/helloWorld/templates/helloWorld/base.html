@@ -1,0 +1,31 @@
+<!--- 
+    This is a BASE TEMPLATE that can be inherited by other HTML files,
+    making it highly scalable.
+
+    This should contain elements you want on EVERY page (ie. Side bar, top bar, etc.)
+-->
+<!DOCTYPE html>
+<!-- Tell browser what version of HTML to render document (HTML5) -->
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <!-- Display special symbols or characters correctly -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <!-- Scaling Size -->
+        <!--* Add External Style Sheet  -->
+        <link rel="stylesheet" href="stylesheet.css" />
+        <!-- Title on Tab Bar -->
+        <title>
+            {% block title %}
+                Default Title
+            {% endblock title %}
+        </title>
+    </head>
+    <body>
+        <div id="content" , name="content">
+            {% block content %}
+                <h1>Default Content</h1>
+            {% endblock content %}
+        </div>
+    </body>
+</html>

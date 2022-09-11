@@ -1,0 +1,25 @@
+{% extends "helloWorld/base.html" %}
+{% block title %}
+    {{ name }}
+{% endblock title %}
+{% block content %}
+    <h1>{{ name }}</h1>
+    <table>
+        <tr>
+            <th>Text</th>
+            <th>Status</th>
+        </tr>
+        {% for item in items %}
+            <tr>
+                <td>{{ item.text }}</td>
+                <td>
+                    {% if item.complete == False %}
+                        Not Done
+                    {% else %}
+                        Complete
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}

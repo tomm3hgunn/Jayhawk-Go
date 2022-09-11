@@ -1,16 +1,22 @@
+from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
 
-# ID parameter is dynamic
-def index(request, id):
+# Home page
+def home(request):
+    return render(request, "helloWorld/home.html")
+
+def toDo(request, id):
     # Display list name
     list = ToDoList.objects.get(id=id)
     name = list.name
     # user filter for multiple objects
-    item = list.item_set.filter(todoList_id=list.id)
-    # HTML string as parameter
-    return HttpResponse(f"<h1>{name}<h1><br></br><p>{item[0]}<p>")
+    items = list.item_set.filter(todoList_id=list.id)
 
+    # create dictionary before passing
+    variables = {"name": name, "items": items}
 
-def depthOne(request):
-    return HttpResponse("<h2>You are now at depth 1 of Hello World<h2>")
+    # pass actual HTML files through
+    # last parameter is a dictionary that corresponds to the variables we will
+    # use in the HTML file
+    return render(request, "helloWorld/todo.html", variables)

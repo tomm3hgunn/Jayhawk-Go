@@ -8,7 +8,7 @@ urlpatterns = [
     # index defined in views.py
     # <type:column>
     # ex. <str:name>
-    
-    path("<int:id>", views.index, name="index"),
+    path("", views.home, name="home"),
+    path("<int:id>", views.toDo, name="ToDo")
     # path("depth1/", views.depthOne, name="depth one"),
 ]
