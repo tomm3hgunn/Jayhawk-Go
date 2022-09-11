@@ -1,0 +1,21 @@
+{% extends "helloWorld/base.html" %}
+{% block title %}
+    Create List
+{% endblock title %}
+{% block content %}
+    <h1>Create New List</h1>
+    <!-- Forms: only need to add "submit" button and after passing form object -->
+    <!-- POST request -->
+    <form method="post" action="/create/">
+        {% comment %}
+        Form Views
+        - horizontal: form.as_table
+        - vertical: form.as_p
+        - dot list: form.as_ul
+        {% endcomment %}
+        
+        {% csrf_token %} <!-- Necessary token to POST information -->
+        {{ form.as_p }}
+        <button type="submit", name="save">Save</button>
+    </form>
+{% endblock content %}
