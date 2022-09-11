@@ -3,6 +3,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import *
 from .forms import *
 
+# premade
+def premade(request):
+    return render(request,"web/index.html")
+
 # Home page
 def home(request):
     return render(request, "helloWorld/home.html")
