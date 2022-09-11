@@ -13,11 +13,32 @@ def toDo(request, id):
     list = ToDoList.objects.get(id=id)
     name = list.name
     # user filter for multiple objects
-    items = list.item_set.filter(todoList_id=list.id)
+    # items = list.item_set.filter(todoList_id=list.id)
+    items = list.item_set.all()
 
     # create dictionary before passing
     variables = {"name": name, "items": items}
 
+    # POST new item in list
+    print(request.POST)
+    if request.method == "POST":
+        # which button was pressed in parameter
+        if request.POST.get("save"):  # if save button was pressed
+            # iterate through items to check whether checkbox is complete
+            for item in items:
+                print(request.POST.get("checkbox" + str(item.id)))
+                if request.POST.get("checkbox" + str(item.id)) == "click":
+                    item.complete = True
+                else:
+                    item.complete = False
+                item.save()
+        elif request.POST.get("newItem"):
+            text = request.POST.get("field")
+            # Make own text validity check
+            if len(text) > 2:
+                list.item_set.create(text=text, complete=False)
+            else:
+                print("invalid")
     # pass actual HTML files through
     # last parameter is a dictionary that corresponds to the variables we will
     # use in the HTML file

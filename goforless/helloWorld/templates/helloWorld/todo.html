@@ -4,22 +4,33 @@
 {% endblock title %}
 {% block content %}
     <h1>{{ name }}</h1>
-    <table>
-        <tr>
-            <th>Text</th>
-            <th>Status</th>
-        </tr>
-        {% for item in items %}
+    {% comment %}
+    * Create form to detect actions 
+    * such as checking box or submit button
+    {% endcomment %}
+    <form action="#" method="post">
+        {% csrf_token %}
+        <table>
             <tr>
-                <td>{{ item.text }}</td>
-                <td>
-                    {% if item.complete == False %}
-                        Not Done
-                    {% else %}
-                        Complete
-                    {% endif %}
-                </td>
+                <th>Text</th>
+                <th>Status</th>
             </tr>
-        {% endfor %}
-    </table>
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.text }}</td>
+                    <td>
+                        {% if item.complete == True %}
+                            <!-- Create a checkbox with name convenction checkbox(item.id)-->
+                            <input type="checkbox", value="click", name="checkbox{{ item.id }}" checked>
+                        {% else %}
+                            <input type="checkbox", value="click", name="checkbox{{ item.id }}">
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <button type="submit", name="save", value="save">Save</button>
+        <input type="text", name="field">
+        <button type="submit", name="newItem", value="newItem">Add Item</button>
+    </form>
 {% endblock content %}
