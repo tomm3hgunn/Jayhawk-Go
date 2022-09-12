@@ -12,6 +12,7 @@
 - Create page displays in views.py
 - Connect views to urls.py in app folder
 - Connect app_name.urls in project folder
+- Add app to INSTALLED_APPS in settings.py
 - Make database before HTML/CSS files to avoid redundant typing of information
 
 ### After creating database model ###

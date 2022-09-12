@@ -1,0 +1,25 @@
+{% extends "apiDisplay/base.html" %}
+{% block content %}
+    <table class="api_table table-dark table-striped table-bordered table-responsive-xl w-100">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Review Count</th>
+                <th>Rating</th>
+                <th>City</th>
+                <th>State</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in data.businesses %}
+                <tr>
+                    <td>{{ entry.name }}</td>
+                    <td>{{ entry.review_count }}</td>
+                    <td>{{ entry.rating }}</td>
+                    <td>{{ entry.location.city }}</td>
+                    <td>{{ entry.location.state }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

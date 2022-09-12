@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Add Apps Here
     "helloWorld.apps.HelloworldConfig",
+    "apiDisplay.apps.ApidisplayConfig"
 ]
 
 MIDDLEWARE = [
