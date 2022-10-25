@@ -9,8 +9,12 @@ from .services import *
 def index(request):
     return render(request, "apiDisplay/index.html")
 
-
 def yelp(request):
-    json = yelpSearch("food", "lenexa")
+    json = yelpSearch("movie", "lenexa")
     variables = {"data": json}
     return render(request, "apiDisplay/yelp.html", variables)
+
+def odds(request):
+    json = oddSearch()
+    variables = {"data":json}
+    return render(request, "apiDisplay/odds.html", variables)
