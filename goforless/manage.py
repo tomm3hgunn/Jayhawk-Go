@@ -22,8 +22,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-# test2 for Mark
-
-
-# test for Mark
-# test for Nathan
