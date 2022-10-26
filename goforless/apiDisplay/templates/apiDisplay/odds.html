@@ -3,20 +3,24 @@
     <table class="api_table table-dark table-striped table-bordered table-responsive-xl w-100">
         <thead>
             <tr>
-                <th>Book</th>
-                <th>Team</th>
-                <th>Commence Time</th>
-                <th>Away</th>
+                <th style="width:10%">Book</th>
+                <th style="width:20%">Home Team</th>
+                <th style="width:20%">Away Team</th>
+                <th style="width:20%">Home Team Price</th>
+                <th style="width:20%">Away Team Price</th>
+                <th style="width:20%">Commence Time</th>
             </tr>
         </thead>
         <tbody>
             {% for entry in data %}
 
                     <tr>
-                        <td>{{ entry.home_team}}</td>
+                        <td>{{ entry.bookmakers.0.key}}</td>
                         <td>{{ entry.home_team }}</td>
+                        <td>{{ entry.away_team }}</td>
+                        <td>{{ entry.bookmakers.0.markets.0.outcomes.1.name }} {{ entry.bookmakers.0.markets.0.outcomes.1.price }}</td>
+                        <td>{{ entry.bookmakers.0.markets.0.outcomes.0.name }}  {{ entry.bookmakers.0.markets.0.outcomes.0.price }}</td>
                         <td>{{ entry.commence_time }}</td>
-                        <td>{{ entry.bookmakers.2.markets.0.outcomes.1.name }}</td>
                     </tr>
             {% endfor %}
         </tbody>
