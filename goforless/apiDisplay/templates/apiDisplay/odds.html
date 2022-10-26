@@ -13,15 +13,14 @@
         </thead>
         <tbody>
             {% for entry in data %}
-
-                    <tr>
-                        <td>{{ entry.bookmakers.0.key}}</td>
-                        <td>{{ entry.home_team }}</td>
-                        <td>{{ entry.away_team }}</td>
-                        <td>{{ entry.bookmakers.0.markets.0.outcomes.1.name }} {{ entry.bookmakers.0.markets.0.outcomes.1.price }}</td>
-                        <td>{{ entry.bookmakers.0.markets.0.outcomes.0.name }}  {{ entry.bookmakers.0.markets.0.outcomes.0.price }}</td>
-                        <td>{{ entry.commence_time }}</td>
-                    </tr>
+                <tr>
+                    <td>{{ entry.bookmakers.0.key }}</td>
+                    <td>{{ entry.home_team }}</td>
+                    <td>{{ entry.away_team }}</td>
+                    <td>{{ entry.bookmakers.0.markets.0.outcomes.1.name }} {{ entry.bookmakers.0.markets.0.outcomes.1.price }}</td>
+                    <td>{{ entry.bookmakers.0.markets.0.outcomes.0.name }}  {{ entry.bookmakers.0.markets.0.outcomes.0.price }}</td>
+                    <td>{{ entry.commence_time }}</td>
+                </tr>
             {% endfor %}
         </tbody>
     </table>
