@@ -1,3 +1,16 @@
+### What To Work On ###
+- Main files to focus on
+    * services.py
+        - Any utilization of any services will be written here, such as API or database
+    * views.py
+        - Handle incoming variables from services and render them to template HTML
+    * urls.py
+        - Define URL names with their corresponding views function
+    * templates/
+        - HTML files that will be rendered by views.py
+        - base.html will be the foundation of all other HTML files. It will contain the header, footer, and navigation bar.
+    * TBD as time goes on
+    
 ### Django Commands ###
 - Create Project (one-time thing)
     django-admin startproject project_name
