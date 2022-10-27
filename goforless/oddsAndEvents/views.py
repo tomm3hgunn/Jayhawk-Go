@@ -6,4 +6,4 @@ from .models import *
 
 
 def index(request):
-    return render(request, "oddsAndEvents/index.html")
+    return render(request, "sportz/index.html")

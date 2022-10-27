@@ -18,6 +18,15 @@
 - API link
     * https://the-odds-api.com/liveapi/guides/v4/#parameters-2
     
+### Convert HTML template to show CSS and JS ###
+- add {% load static %} to top of page
+- With any folder reference, add {% static folder/ %}
+    * <img src="images/logo.png> changes to <img src={% static 'images/logo.png' %}>
+    * <link rel="stylesheet" href="css/style.css"> changes to <link rel="stylesheet" href={% static 'css/style.css' %}>
+    * <script src="js/script.js"></script> changes to <script src={% static 'js/script.js' %}></script>
+- create new folder called 'static' and paste all folders (js, css, images, etc.)
+    * Do not put HTML files in static
+
 ### Django Commands ###
 - Create Project (one-time thing)
     django-admin startproject project_name
