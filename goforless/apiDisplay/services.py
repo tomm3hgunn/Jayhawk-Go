@@ -5,19 +5,6 @@ import os
 from pprint import pprint
 
 
-def yelpSearch(term, location):
-    # Load API token
-    load_dotenv()
-    YELP_API = os.environ["YELP_API"]
-
-    baseUrl = "https://api.yelp.com/v3/businesses/search"
-    params = {"term": term, "location": location}
-    headers = {"Authorization": f"Bearer {YELP_API}"}
-    response = requests.get(baseUrl, headers=headers, params=params)
-    json = response.json()
-    return json
-
-
 def oddSearch(region="us", markets="spreads"):
     load_dotenv()
     ODDS_API = os.environ["ODDS_API"]
@@ -27,4 +14,20 @@ def oddSearch(region="us", markets="spreads"):
     response = requests.get(baseUrl, params=params)
     json = response.json()
     pprint(json[0])
+    return json
+
+def oddMoneyline():
+    json = oddSearch(markets="h2h")
+    return json
+
+def oddTotals():
+    json = oddSearch(markets="totals")
+    return json
+
+def oddOutrights():
+    json = oddSearch(markets="outrights")
+    return json
+
+def oddSpreads():
+    json = oddSearch(markets="spreads")
     return json

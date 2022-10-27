@@ -1,5 +1,16 @@
 {% extends "apiDisplay/base.html" %}
 {% block content %}
+    <!-- header with grey background white text -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h1>Outrights</h1>
+                    <p>Example of getting outrights data</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <table class="api_table table-dark table-striped table-bordered table-responsive-xl w-100">
         <thead>
             <tr>
@@ -7,20 +18,15 @@
                 <th style="width:20%">Home Team</th>
                 <th style="width:20%">Away Team</th>
                 <th style="width:20%">Home Team Price</th>
+                <th style="width:20%">Home Team Points</th>
                 <th style="width:20%">Away Team Price</th>
+                <th style="width:20%">Away Team Points</th>
                 <th style="width:20%">Commence Time</th>
             </tr>
         </thead>
         <tbody>
             {% for entry in data %}
-                <tr>
-                    <td>{{ entry.bookmakers.0.key }}</td>
-                    <td>{{ entry.home_team }}</td>
-                    <td>{{ entry.away_team }}</td>
-                    <td>{{ entry.bookmakers.0.markets.0.outcomes.1.name }} {{ entry.bookmakers.0.markets.0.outcomes.1.price }}</td>
-                    <td>{{ entry.bookmakers.0.markets.0.outcomes.0.name }}  {{ entry.bookmakers.0.markets.0.outcomes.0.price }}</td>
-                    <td>{{ entry.commence_time }}</td>
-                </tr>
+                
             {% endfor %}
         </tbody>
     </table>
