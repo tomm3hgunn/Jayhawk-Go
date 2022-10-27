@@ -391,6 +391,8 @@
                                                     </div>
                                                 </div>
                                                 <!-- END row -->
+                                                {% for entry in data %}
+                                                {% for bookmaker in entry.bookmakers %}
                                                 <div class="row bg-white align-items-center ml-0 mr-0 py-4 match-entry">
                                                     <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
                                                         <div class="text-center text-lg-left">
@@ -400,9 +402,9 @@
                                                                 </div>
                                                                 <div class="text">
                                                                     <h3 class="h5 mb-0 text-black">
-                                                                        Patriots
+                                                                        {{entry.home_team}}
                                                                     </h3>
-                                                                    <span class="text-uppercase small country">Brazil</span>
+                                                                    <span class="text-uppercase small country">{{ bookmaker.title }}</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -410,7 +412,7 @@
                                                     <div class="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
                                                         <div class="d-inline-block">
                                                             <div class="bg-black py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                <span class="h5">3:2</span>
+                                                                <span class="h5">{{ bookmaker.markets.0.outcomes.1.price }} : {{ bookmaker.markets.0.outcomes.0.price }}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -422,14 +424,16 @@
                                                                 </div>
                                                                 <div class="text order-1 w-100">
                                                                     <h3 class="h5 mb-0 text-black">
-                                                                        Cowboys
+                                                                        {{entry.away_team}}
                                                                     </h3>
-                                                                    <span class="text-uppercase small country">London</span>
+                                                                    <span class="text-uppercase small country">{{ bookmaker.title }}</span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                {% endfor %}
+                                                {% endfor %}
                                                 <!-- END row -->
                                                 <div class="row bg-white align-items-center ml-0 mr-0 py-4 match-entry">
                                                     <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
