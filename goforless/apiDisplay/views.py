@@ -9,12 +9,26 @@ from .services import *
 def index(request):
     return render(request, "apiDisplay/index.html")
 
-def yelp(request):
-    json = yelpSearch("movie", "lenexa")
-    variables = {"data": json}
-    return render(request, "apiDisplay/yelp.html", variables)
 
-def odds(request):
-    json = oddSearch()
-    variables = {"data":json}
-    return render(request, "apiDisplay/odds.html", variables)
+def spreads(request):
+    json = oddSpreads()
+    variables = {"data": json}
+    return render(request, "apiDisplay/spreads.html", variables)
+
+
+def totals(request):
+    json = oddTotals()
+    variables = {"data": json}
+    return render(request, "apiDisplay/totals.html", variables)
+
+
+def outrights(request):
+    json = oddOutrights()
+    variables = {"data": json}
+    return render(request, "apiDisplay/outrights.html", variables)
+
+
+def moneyline(request):
+    json = oddMoneyline()
+    variables = {"data": json}
+    return render(request, "apiDisplay/moneyline.html", variables)
