@@ -14,29 +14,26 @@
     <table class="api_table table-dark table-striped table-bordered table-responsive-xl w-100">
         <thead>
             <tr>
-                <th style="width:10%">Book</th>
+                <th style="width:20%">Book</th>
                 <th style="width:20%">Home Team</th>
                 <th style="width:20%">Away Team</th>
-                <th style="width:20%">Home Team Price</th>
-                <th style="width:20%">Home Team Points</th>
-                <th style="width:20%">Away Team Price</th>
-                <th style="width:20%">Away Team Points</th>
-                <th style="width:20%">Commence Time</th>
+                <th style="width:10%">Home Price</th>
+                <th style="width:10%">Away Price</th>
+                <th style="width:20%">Last Update</th>
             </tr>
         </thead>
         <tbody>
             {% for entry in data %}
-
+                {% for bookmaker in entry.bookmakers %}
                     <tr>
-                        <td>{{ entry.bookmakers.0.title}}</td>
+                        <td>{{ bookmaker.title }}</td>
                         <td>{{ entry.home_team }}</td>
                         <td>{{ entry.away_team }}</td>
-                        <td>{{ entry.bookmakers.0.markets.0.outcomes.1.name }}<span style="color:green"> <span " ">{{ entry.bookmakers.0.markets.0.outcomes.1.price }}</span></span></td>
-                        <td>{{ entry.bookmakers.0.markets.0.outcomes.0.name }}<span style="color:green"> <span " ">{{ entry.bookmakers.0.markets.0.outcomes.0.price }}</span></span></td>
-                        <td>{{ entry.commence_time }}</td>
+                        <td>{{ bookmaker.markets.0.outcomes.1.price }}</td>
+                        <td>{{ bookmaker.markets.0.outcomes.0.price }}</td>
+                        <td>{{ bookmaker.last_update }}</td>
                     </tr>
-                   
-                
+                {% endfor %}
             {% endfor %}
         </tbody>
     </table>

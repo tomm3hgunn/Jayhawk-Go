@@ -9,11 +9,11 @@ def oddSearch(region="us", markets="spreads"):
     load_dotenv()
     ODDS_API = os.environ["ODDS_API"]
 
-    params = {"regions": region, "markets": markets, "apiKey": ODDS_API}
+    params = {"regions": region, "markets": markets, "apiKey": ODDS_API, "oddsFormat": "american"}
     baseUrl = f"https://api.the-odds-api.com/v4/sports/americanfootball_nfl/odds"
     response = requests.get(baseUrl, params=params)
     json = response.json()
-    # pprint(json[0])
+    pprint(json[0])
     return json
 
 def oddMoneyline():
@@ -22,11 +22,6 @@ def oddMoneyline():
 
 def oddTotals():
     json = oddSearch(markets="totals")
-    pprint(json[0])
-    return json
-
-def oddOutrights():
-    json = oddSearch(markets="outrights")
     return json
 
 def oddSpreads():
