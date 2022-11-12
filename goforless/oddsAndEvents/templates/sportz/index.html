@@ -189,7 +189,7 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-4">
                             <div class="p-3 p-md-5 feature-block-1 mb-5 mb-lg-0 bg"
-                                 style="background-image: url(/static/'images/img_1.jpg');">
+                                 style="background-image: url(/static/images/img_1.jpg');">
                                 <div class="text">
                                     <h2 class="h5 text-white">
                                         Welcome to Jayhawk GO!
@@ -224,7 +224,7 @@
                                  style="background-image: url(/static/'images/img_3.jpg');">
                                 <div class="text">
                                     <h2 class="h5 text-white">
-                                        Welcome to 
+                                        Welcome to
                                     </h2>
                                     <p>
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos repellat autem illum nostrum sit distinctio!
@@ -392,47 +392,47 @@
                                                 </div>
                                                 <!-- END row -->
                                                 {% for entry in data %}
-                                                {% for bookmaker in entry.bookmakers %}
-                                                <div class="row bg-white align-items-center ml-0 mr-0 py-4 match-entry">
-                                                    <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
-                                                        <div class="text-center text-lg-left">
-                                                            <div class="d-block d-lg-flex align-items-center">
-                                                                <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
-                                                                    <img src={% static "images/img_1_sq.jpg" %} alt="Image" class="img-fluid">
+                                                    {% for bookmaker in entry.bookmakers %}
+                                                        <div class="row bg-white align-items-center ml-0 mr-0 py-4 match-entry">
+                                                            <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
+                                                                <div class="text-center text-lg-left">
+                                                                    <div class="d-block d-lg-flex align-items-center">
+                                                                        <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
+                                                                            <img src={% static "images/img_1_sq.jpg" %} alt="Image" class="img-fluid">
+                                                                        </div>
+                                                                        <div class="text">
+                                                                            <h3 class="h5 mb-0 text-black">
+                                                                                {{ entry.home_team }}
+                                                                            </h3>
+                                                                            <span class="text-uppercase small country">{{ bookmaker.title }}</span>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="text">
-                                                                    <h3 class="h5 mb-0 text-black">
-                                                                        {{entry.home_team}}
-                                                                    </h3>
-                                                                    <span class="text-uppercase small country">{{ bookmaker.title }}</span>
+                                                            </div>
+                                                            <div class="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
+                                                                <div class="d-inline-block">
+                                                                    <div class="bg-black py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                        <span class="h5">{{ bookmaker.markets.0.outcomes.1.price }} : {{ bookmaker.markets.0.outcomes.0.price }}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 col-lg-4 text-center text-lg-right">
+                                                                <div class="">
+                                                                    <div class="d-block d-lg-flex align-items-center">
+                                                                        <div class="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
+                                                                            <img src={% static "images/img_4_sq.jpg" %} alt="Image" class="img-fluid">
+                                                                        </div>
+                                                                        <div class="text order-1 w-100">
+                                                                            <h3 class="h5 mb-0 text-black">
+                                                                                {{ entry.away_team }}
+                                                                            </h3>
+                                                                            <span class="text-uppercase small country">{{ bookmaker.title }}</span>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
-                                                        <div class="d-inline-block">
-                                                            <div class="bg-black py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                <span class="h5">{{ bookmaker.markets.0.outcomes.1.price }} : {{ bookmaker.markets.0.outcomes.0.price }}</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 col-lg-4 text-center text-lg-right">
-                                                        <div class="">
-                                                            <div class="d-block d-lg-flex align-items-center">
-                                                                <div class="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
-                                                                    <img src={% static "images/img_4_sq.jpg" %} alt="Image" class="img-fluid">
-                                                                </div>
-                                                                <div class="text order-1 w-100">
-                                                                    <h3 class="h5 mb-0 text-black">
-                                                                        {{entry.away_team}}
-                                                                    </h3>
-                                                                    <span class="text-uppercase small country">{{ bookmaker.title }}</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                {% endfor %}
+                                                    {% endfor %}
                                                 {% endfor %}
                                                 <!-- END row -->
                                                 <div class="row bg-white align-items-center ml-0 mr-0 py-4 match-entry">
@@ -1112,7 +1112,6 @@
                     </div>
                 </div>
             </div>
-            
             <footer class="site-footer border-top">
                 <div class="container">
                     <div class="row">
@@ -1173,7 +1172,8 @@
                             <p>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;<script data-cfasync="false"
-        src={%static "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" %}></script><script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+        src
+        {%static "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" %}></script><script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>
