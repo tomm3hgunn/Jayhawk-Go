@@ -1,0 +1,34 @@
+%%% Common Guidelines %%%
+
+# Branches
+- Do NOT work in the main branch
+    * Any commits to main should be 100% safe. If you are working on a feature, you should be working in a separate branch.
+    * Committing frequently is a good habit to get into. It allows you to revert to a previous commit if you break something, and it allows you to see what you've done in the past.
+- Pull frequently to get the latest changes from teammates
+- Create another branch for each feature you are working on
+    * This allows you to work on multiple features at once
+    * This allows you to revert to a previous commit if you break something
+    * This allows you to see what you've done in the past
+- Merge features that appear to be working to the dev branch
+    * This allows teammates to test your code before it is merged to main.
+
+# Issues
+- Create issues for features that are being worked on or planned to be worked on
+    * Assign yourself to the issue
+    * Start your commit message with any of the following to link the issue # to the commit
+        fix #xxx
+        fixes #xxx
+        fixed #xxx
+        close #xxx
+        closes #xxx
+        closed #xxx
+        resolve #xxx
+        resolves #xxx
+        resolved #xxx
+
+# Commits
+- Commit frequently
+- Write descriptive commit messages
+    * There will be a lot of commits, so it's important to be able to understand what each commit does.
+    * Commit messages can be multiple lines! Just press enter for a new line.
+- Get GitLens extension to quickly view commit history
