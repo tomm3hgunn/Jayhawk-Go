@@ -344,6 +344,8 @@
                                            aria-selected="false">Match 3</a>
                                     </li>
                                 </ul>
+
+                                {% comment %}! PANE 1 {% endcomment %}
                                 <div class="tab-content" id="pills-tabContent">
                                     <div class="tab-pane fade show active"
                                          id="pills-home"
@@ -351,133 +353,98 @@
                                          aria-labelledby="pills-home-tab">
                                         <div class="row align-items-center">
                                             <div class="col-md-12">
-                                                <div class="row bg-white align-items-center ml-0 mr-0 py-4 match-entry">
-                                                    <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
-                                                        <div class="text-center text-lg-left">
-                                                            <div class="d-block d-lg-flex align-items-center">
-                                                                <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
-                                                                    <img src={% static "images/img_1_sq.jpg" %} alt="Image" class="img-fluid">
-                                                                </div>
-                                                                <div class="text">
-                                                                    <h3 class="h5 mb-0 text-black">
-                                                                        Packers
-                                                                    </h3>
-                                                                    <span class="text-uppercase small country">Brazil</span>
-                                                                </div>
+                                                {% comment %}* CUSTOM ROW {% endcomment %}
+                                                <div class="row bg-dark text-center ml-0 mr-0 py-2 my-match">
+                                                    <div class="col-md-3 col-lg-3 mb-4 mb-lg-0">
+                                                                <h3 class="h5 mb-0 text-white">
+                                                                    Matchup
+                                                                </h3>
+                                                            </div>
+                                                            <div class="col-md-6 col-lg-6 mb-4 mb-lg-0">
+                                                                <h3 class="h5 mb-0 text-white">
+                                                                    Sportsbook
+                                                                </h3>
+                                                            </div>
+                                                            <div class="col-md-1 col-lg-1 mb-4 mb-lg-0 ml-auto">
+                                                                <h3 class="h5 mb-0 text-white">
+                                                                    Points
+                                                                </h3>
+                                                            </div>
+                                                            <div class="col-md-1 col-lg-1 mb-4 mb-lg-0 mr-3">
+                                                                <h3 class="h5 mb-0 text-white">
+                                                                    Price
+                                                                </h3>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
-                                                        <div class="d-inline-block">
-                                                            <div class="bg-black py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                <span class="h5">3:2</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 col-lg-4 text-center text-lg-right">
-                                                        <div class="">
-                                                            <div class="d-block d-lg-flex align-items-center">
-                                                                <div class="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
-                                                                    <img src={% static "images/img_4_sq.jpg" %} alt="Image" class="img-fluid">
-                                                                </div>
-                                                                <div class="text order-1 w-100">
-                                                                    <h3 class="h5 mb-0 text-black">
-                                                                        Steelers
-                                                                    </h3>
-                                                                    <span class="text-uppercase small country">London</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- END row -->
-                                                {% for entry in data %}
-                                                    {% for bookmaker in entry.bookmakers %}
-                                                        <div class="row bg-white align-items-center ml-0 mr-0 py-4 match-entry">
-                                                            <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
-                                                                <div class="text-center text-lg-left">
-                                                                    <div class="d-block d-lg-flex align-items-center">
-                                                                        <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
-                                                                            <img src={% static "images/img_1_sq.jpg" %} alt="Image" class="img-fluid">
+                                                        {% for entry in data %}
+                                                           {% for bookmaker in entry.bookmakers %}
+                                                                <div class="row bg-white align-items-center ml-0 mr-0 py-2 my-match">
+                                                                    <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
+                                                                        <div class="text-center text-lg-left py-2">
+                                                                            <div class="d-block d-lg-flex align-items-center">
+                                                                                <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
+                                                                                    <img src={% static "images/img_1_sq.jpg" %} alt="Image" class="img-fluid">
+                                                                                </div>
+                                                                                <div class="text">
+                                                                                    <h3 class="h5 mb-0 text-black">
+                                                                                        {{ entry.home_team }}
+                                                                                    </h3>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="text">
-                                                                            <h3 class="h5 mb-0 text-black">
-                                                                                {{ entry.home_team }}
-                                                                            </h3>
-                                                                            <span class="text-uppercase small country">{{ bookmaker.title }}</span>
+                                                                        <div class="text-center text-lg-left">
+                                                                            <div class="d-block d-lg-flex align-items-center">
+                                                                                <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
+                                                                                    <img src={% static "images/img_1_sq.jpg" %} alt="Image" class="img-fluid">
+                                                                                </div>
+                                                                                <div class="text">
+                                                                                    <h3 class="h5 mb-0 text-black">
+                                                                                        {{ entry.away_team }}
+                                                                                    </h3>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
+                                                                        <span class="text-uppercase small country text-muted">LAST UPDATED HERE</span>
+                                                                        <div class="image image-small mx-auto mb-3 mb-lg-0">
+                                                                            <img src={% static "images/fanduel.png" %} alt="Image" class="img-fluid">
+                                                                        </div>
+                                                                        <span class="text-uppercase small country text-muted">{{ bookmaker.title }}</span>
+                                                                    </div>
+                                                                    <div class="col-1 ml-auto">
+                                                                        <div class="d-block d-lg-flex py-2">
+                                                                            <div class="bg-light py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                <span class="h5 text-black">{{ bookmaker.markets.0.outcomes.1.point }}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="d-block d-lg-flex">
+                                                                            <div class="bg-light py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                <span class="h5 text-black">{{ bookmaker.markets.0.outcomes.0.point }}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-1 mr-4">
+                                                                        <div class="d-block d-lg-flex py-2">
+                                                                            <div class="bg-light py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                <span class="h5 text-black">{{ bookmaker.markets.0.outcomes.1.price }}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="d-block d-lg-flex">
+                                                                            <div class="bg-light py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                <span class="h5 text-black">{{ bookmaker.markets.0.outcomes.0.price }}</span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
-                                                                <div class="d-inline-block">
-                                                                    <div class="bg-black py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                        <span class="h5">{{ bookmaker.markets.0.outcomes.1.price }} : {{ bookmaker.markets.0.outcomes.0.price }}</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4 col-lg-4 text-center text-lg-right">
-                                                                <div class="">
-                                                                    <div class="d-block d-lg-flex align-items-center">
-                                                                        <div class="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
-                                                                            <img src={% static "images/img_4_sq.jpg" %} alt="Image" class="img-fluid">
-                                                                        </div>
-                                                                        <div class="text order-1 w-100">
-                                                                            <h3 class="h5 mb-0 text-black">
-                                                                                {{ entry.away_team }}
-                                                                            </h3>
-                                                                            <span class="text-uppercase small country">{{ bookmaker.title }}</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    {% endfor %}
-                                                {% endfor %}
-                                                <!-- END row -->
-                                                <div class="row bg-white align-items-center ml-0 mr-0 py-4 match-entry">
-                                                    <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
-                                                        <div class="text-center text-lg-left">
-                                                            <div class="d-block d-lg-flex align-items-center">
-                                                                <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
-                                                                    <img src={% static "images/img_1_sq.jpg" %} alt="Image" class="img-fluid">
-                                                                </div>
-                                                                <div class="text">
-                                                                    <h3 class="h5 mb-0 text-black">
-                                                                        Raiders
-                                                                    </h3>
-                                                                    <span class="text-uppercase small country">Brazil</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
-                                                        <div class="d-inline-block">
-                                                            <div class="bg-black py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                <span class="h5">3:2</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 col-lg-4 text-center text-lg-right">
-                                                        <div class="">
-                                                            <div class="d-block d-lg-flex align-items-center">
-                                                                <div class="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
-                                                                    <img src={% static "images/img_4_sq.jpg" %} alt="Image" class="img-fluid">
-                                                                </div>
-                                                                <div class="text order-1 w-100">
-                                                                    <h3 class="h5 mb-0 text-black">
-                                                                        Chiefs
-                                                                    </h3>
-                                                                    <span class="text-uppercase small country">London</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- END row -->
+                                                                {% comment %}* CUSTOM ROW END {% endcomment %}
+                                                                {% endfor %}
+                                                        {% endfor %}
                                             </div>
                                         </div>
                                     </div>
+
+                                    {% comment %}! PANE 2 {% endcomment %}
                                     <div class="tab-pane fade"
                                          id="pills-profile"
                                          role="tabpanel"
@@ -607,6 +574,8 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    {% comment %}! PANE 3 {% endcomment %}
                                     <div class="tab-pane fade"
                                          id="pills-contact"
                                          role="tabpanel"
