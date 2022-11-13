@@ -13,17 +13,20 @@ def oddSearch(region="us", markets="spreads"):
     baseUrl = f"https://api.the-odds-api.com/v4/sports/americanfootball_nfl/odds"
     response = requests.get(baseUrl, params=params)
     json = response.json()
-    # pprint(json[0])
+    pprint(json[0])
     return json
 
 def oddMoneyline():
+    print("requested moneyline")
     json = oddSearch(markets="h2h")
     return json
 
 def oddTotals():
+    print("requested totals")
     json = oddSearch(markets="totals")
     return json
 
 def oddSpreads():
+    print("requested spreads")
     json = oddSearch(markets="spreads")
     return json
