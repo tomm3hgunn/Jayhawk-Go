@@ -15,8 +15,10 @@ def news(request):
 
 
 def matches(request):
-    json = oddSpreads()
-    variables = {"data": json}
+    spreadsJson = oddSpreads()
+    totalsJson = oddTotals()
+    moneylineJson = oddMoneyline()
+    variables = {"spreads": spreadsJson, "totals": totalsJson, "moneyline": moneylineJson}
     return render(request, "sportz/matches.html", variables)
 
 

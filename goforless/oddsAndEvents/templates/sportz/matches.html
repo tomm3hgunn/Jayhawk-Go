@@ -107,8 +107,19 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="active">
+                            <li class="active has-children">
                                 <a href="matches">Matches</a>
+                                <ul class="dropdown arrow-top">
+                                    <li>
+                                        <a href="#">Spreads</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Totals</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Moneyline</a>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 <a href="team">Team</a>
@@ -133,10 +144,10 @@
                              data-aos="fade-up"
                              data-aos-delay="400">
                             <h1 class="bg-text-line">
-                                Spreads
+                                Matches
                             </h1>
                             <p class="mt-4">
-                                Latest Sportsbook data on spreads.
+                                Latest Sportsbook data on spreads, totals, and moneylines.
                             </p>
                         </div>
                     </div>
@@ -235,7 +246,7 @@
                                            href="#pills-home"
                                            role="tab"
                                            aria-controls="pills-home"
-                                           aria-selected="true">Match 1</a>
+                                           aria-selected="true">Spreads</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link"
@@ -244,7 +255,7 @@
                                            href="#pills-profile"
                                            role="tab"
                                            aria-controls="pills-profile"
-                                           aria-selected="false">Match 2</a>
+                                           aria-selected="false">Totals</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link"
@@ -253,7 +264,7 @@
                                            href="#pills-contact"
                                            role="tab"
                                            aria-controls="pills-contact"
-                                           aria-selected="false">Match 3</a>
+                                           aria-selected="false">Moneyline</a>
                                     </li>
                                 </ul>
                                 {% comment %}! PANE 1 {% endcomment %}
@@ -288,7 +299,7 @@
                                                     </div>
                                                 </div>
                                                 {% comment %}* API DISPLAY FOR SPREADS {% endcomment %}
-                                                {% for entry in data %}
+                                                {% for entry in spreads %}
                                                     {% for bookmaker in entry.bookmakers %}
                                                         <div class="row bg-white align-items-center ml-0 mr-0 py-2 match-entry">
                                                             <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
@@ -333,30 +344,59 @@
                                                             </div>
                                                             <div class="col-1 ml-auto">
                                                                 <div class="d-block d-lg-flex py-2">
-                                                                    <div class="bg-light py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                        {% comment %}* HOME POINT {% endcomment %}
-                                                                        <span class="h5 text-black">{{ bookmaker.markets.0.outcomes.1.point }}</span>
-                                                                    </div>
+                                                                    {% if bookmaker.markets.0.outcomes.1.point > 0 %}
+                                                                        <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                            {% comment %}* HOME POINT {% endcomment %}
+                                                                            <span class="h5">{{ bookmaker.markets.0.outcomes.1.point }}</span>
+                                                                        </div>
+                                                                    {% else %}
+                                                                        <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                            {% comment %}* HOME POINT {% endcomment %}
+                                                                            <span class="h5">{{ bookmaker.markets.0.outcomes.1.point }}</span>
+                                                                        </div>
+                                                                    {% endif %}
                                                                 </div>
                                                                 <div class="d-block d-lg-flex">
-                                                                    <div class="bg-light py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                    {% if bookmaker.markets.0.outcomes.0.point > 0 %}
+                                                                    <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
                                                                         {% comment %}* AWAY POINT {% endcomment %}
-                                                                        <span class="h5 text-black">{{ bookmaker.markets.0.outcomes.0.point }}</span>
+                                                                        <span class="h5">{{ bookmaker.markets.0.outcomes.0.point }}</span>
                                                                     </div>
+                                                                    {% else %}
+                                                                    <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                        {% comment %}* AWAY POINT {% endcomment %}
+                                                                        <span class="h5">{{ bookmaker.markets.0.outcomes.0.point }}</span>
+                                                                    </div>
+                                                                    {% endif %}
                                                                 </div>
                                                             </div>
                                                             <div class="col-1 mr-4">
                                                                 <div class="d-block d-lg-flex py-2">
-                                                                    <div class="bg-light py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                    {% if bookmaker.markets.0.outcomes.1.price > 0 %}
+                                                                    <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
                                                                         {% comment %}* HOME PRICE {% endcomment %}
-                                                                        <span class="h5 text-black">{{ bookmaker.markets.0.outcomes.1.price }}</span>
+                                                                        <span class="h5">{{ bookmaker.markets.0.outcomes.1.price }}</span>
                                                                     </div>
+                                                                    {% else %}
+                                                                    <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                        {% comment %}* HOME PRICE {% endcomment %}
+                                                                        <span class="h5">{{ bookmaker.markets.0.outcomes.1.price }}</span>
+                                                                    </div>
+
+                                                                    {% endif %}
                                                                 </div>
                                                                 <div class="d-block d-lg-flex">
-                                                                    <div class="bg-light py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                    {% if bookmaker.markets.0.outcomes.0.price > 0 %}
+                                                                    <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
                                                                         {% comment %}* AWAY PRICE {% endcomment %}
-                                                                        <span class="h5 text-black">{{ bookmaker.markets.0.outcomes.0.price }}</span>
+                                                                        <span class="h5">{{ bookmaker.markets.0.outcomes.0.price }}</span>
                                                                     </div>
+                                                                    {% else %}
+                                                                    <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                        {% comment %}* AWAY PRICE {% endcomment %}
+                                                                        <span class="h5">{{ bookmaker.markets.0.outcomes.0.price }}</span>
+                                                                    </div>
+                                                                    {% endif %}
                                                                 </div>
                                                             </div>
                                                         </div>
