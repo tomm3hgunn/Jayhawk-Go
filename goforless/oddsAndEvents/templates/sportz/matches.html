@@ -307,7 +307,11 @@
                                                                     <div class="d-block d-lg-flex align-items-center">
                                                                         <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
                                                                             {% comment %}* HOME IMAGE {% endcomment %}
-                                                                            <img src={% static "images/img_1_sq.jpg" %} alt="Image" class="img-fluid">
+                                                                            {% with teamImage=entry.home_team|lower|cut:" "|add:".png"%}
+                                                                            {% with imagePath="images/"|add:teamImage%}
+                                                                            <img src={% static imagePath %} alt="Image" class="img-fluid">
+                                                                            {% endwith %}
+                                                                            {% endwith %}
                                                                         </div>
                                                                         <div class="text">
                                                                             <h3 class="h5 mb-0 text-black">
@@ -321,7 +325,11 @@
                                                                     <div class="d-block d-lg-flex align-items-center">
                                                                         <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
                                                                             {% comment %}* AWAY TEAM IMAGE{% endcomment %}
-                                                                            <img src={% static "images/img_1_sq.jpg" %} alt="Image" class="img-fluid">
+                                                                            {% with teamImage=entry.away_team|lower|cut:" "|add:".png"%}
+                                                                            {% with imagePath="images/"|add:teamImage%}
+                                                                            <img src={% static imagePath %} alt="Image" class="img-fluid">
+                                                                            {% endwith %}
+                                                                            {% endwith %}
                                                                         </div>
                                                                         <div class="text">
                                                                             <h3 class="h5 mb-0 text-black">
