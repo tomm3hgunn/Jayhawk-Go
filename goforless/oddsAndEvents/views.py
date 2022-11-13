@@ -5,6 +5,7 @@ from .services import *
 
 # Create your views here.
 
+books = ["fanduel", "barstoolsportsbook", "williamhill(us)", "draftkings", "betmgm"]
 
 def index(request):
     return render(request, "sportz/index.html")
@@ -18,7 +19,7 @@ def matches(request):
     spreadsJson = oddSpreads()
     totalsJson = oddTotals()
     moneylineJson = oddMoneyline()
-    variables = {"spreads": spreadsJson, "totals": totalsJson, "moneyline": moneylineJson}
+    variables = {"spreads": spreadsJson, "totals": totalsJson, "moneyline": moneylineJson, "books": books}
     return render(request, "sportz/matches.html", variables)
 
 
