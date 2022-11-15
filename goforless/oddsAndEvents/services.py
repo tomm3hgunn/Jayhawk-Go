@@ -29,3 +29,27 @@ def oddSpreads():
     print("requested spreads")
     json = oddSearch(markets="spreads")
     return json
+
+#not sure yet where these func needs to be this can be temp
+#lowest to highest might be they best display
+# "Best" may be difficult because its gambling (maybe we could impliment "our pick")
+#lowest to highest might be they best display
+def sortMoneyLine():
+    print("spread form lowest to highest")
+    json = oddSerach(markets="spreads")
+    json.sort()
+    return json
+
+def sortTotals():
+    print("Totals from lowest to highest")
+    json = oddSearch(markets="totals")
+    json.sort()
+    return json
+
+def sortMoneyline():
+    print("moneyline from lowest to highest")
+    json = oddSearch(markets="h2h")
+    json.sort()
+    return json
+    
+    
