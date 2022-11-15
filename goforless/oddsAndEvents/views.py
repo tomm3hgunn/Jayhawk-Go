@@ -39,3 +39,10 @@ def about(request):
 
 def contact(request):
     return render(request, "sportz/contact.html")
+
+def matchup(request, homeTeam, awayTeam):
+    spreadsJson = oddSpreads()
+    totalsJson = oddTotals()
+    moneylineJson = oddMoneyline()
+    variables = {"spreads": spreadsJson, "totals": totalsJson, "moneyline": moneylineJson, "books": books, "homeTeam": homeTeam, "awayTeam": awayTeam}
+    return render(request, "sportz/matchup.html", variables)
