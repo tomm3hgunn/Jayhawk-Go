@@ -19,11 +19,15 @@ def matches(request):
     spreadsJson = oddSpreads()
     totalsJson = oddTotals()
     moneylineJson = oddMoneyline()
-    variables = {"spreads": spreadsJson, "totals": totalsJson, "moneyline": moneylineJson, "books": books}
+    
+    sortSpreadsJson = sortSpreads()
+    sortTotalsJson = sortTotals()
+    sortMoneylineJson = sortMoneyline()
+    
+    variables = {"spreads": spreadsJson, "totals": totalsJson, "moneyline": moneylineJson, "sortedSpreads": sortSpreadsJson,
+                 "sortedTotals": sortTotalsJson, "sortedMoneyline": sortMoneylineJson, "books": books}
     return render(request, "sportz/matches.html", variables)
 
-#copy of spreadsJson
-cpySpreads = spreadsJson
 
 def team(request):
     return render(request, "sportz/team.html")
