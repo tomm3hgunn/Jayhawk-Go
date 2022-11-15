@@ -34,22 +34,22 @@ def oddSpreads():
 #lowest to highest might be they best display
 # "Best" may be difficult because its gambling (maybe we could impliment "our pick")
 #lowest to highest might be they best display
-def sortMoneyLine():
+def sortSpreads():
     print("spread form lowest to highest")
-    json = oddSerach(markets="spreads")
-    json.sort()
+    json = oddSearch(markets="spreads")
+    # json.sort()
     return json
 
 def sortTotals():
     print("Totals from lowest to highest")
     json = oddSearch(markets="totals")
-    json.sort()
+    # json.sort()
     return json
 
 def sortMoneyline():
     print("moneyline from lowest to highest")
     json = oddSearch(markets="h2h")
-    json.sort()
+    # json.sort()
     return json
     
     
