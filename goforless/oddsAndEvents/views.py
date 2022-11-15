@@ -22,6 +22,8 @@ def matches(request):
     variables = {"spreads": spreadsJson, "totals": totalsJson, "moneyline": moneylineJson, "books": books}
     return render(request, "sportz/matches.html", variables)
 
+#copy of spreadsJson
+cpySpreads = spreadsJson
 
 def team(request):
     return render(request, "sportz/team.html")
