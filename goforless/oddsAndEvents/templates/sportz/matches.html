@@ -302,8 +302,6 @@
                                                 {% comment %}* API DISPLAY FOR SPREADS {% endcomment %}
                                                 {% for entry in spreads %}
                                                     {% for bookmaker in entry.bookmakers %}
-                                                        {% with bookName=bookmaker.title|lower|cut:" " %}
-                                                            {% if bookName in books %}
                                                                 {% comment %} url goes to dynamic page with home and away team {% endcomment %}
                                                                 <a href="{% url 'matchup' entry.home_team entry.away_team %}">
                                                                     <div class="row bg-white align-items-center ml-0 mr-0 py-2 match-entry">
@@ -420,8 +418,6 @@
                                                                     </div>
                                                                     {% comment %}* CUSTOM ROW END {% endcomment %}
                                                                 </a>
-                                                            {% endif %}
-                                                        {% endwith %}
                                                     {% endfor %}
                                                 {% endfor %}
                                             </div>
@@ -470,8 +466,6 @@
                                                 {% comment %} * API DISPLAY FOR TOTALS (OVER/UNDER) {% endcomment %}
                                                 {% for entry in totals %}
                                                 {%for bookmaker in entry.bookmakers%}
-                                                {%with bookName=bookmaker.title|lower|cut:" " %}
-                                                {% if bookName in books %}
                                                 {% comment %} url goes to dynamic page with home and away team {% endcomment %}
                                                 <a href="{% url 'matchup' entry.home_team entry.away_team %}">
                                                     <div class="row bg-white align-items-center ml-0 mr-0 py-2 match-entry">
@@ -589,8 +583,6 @@
                                                     </div>
                                                     {% comment %}* CUSTOM ROW END {% endcomment %}
                                                 </a>
-                                                    {% endif %}
-                                                    {% endwith %}
                                                 {% endfor %}
                                             {% endfor %}
                                         </div>
