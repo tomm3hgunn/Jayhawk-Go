@@ -534,7 +534,7 @@
                                                                     </div>
                                                                 {% else %}
                                                                     <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                        {% comment %}*  {% endcomment %}
+                                                                       {% comment %}TODO Dont think needed {% endcomment %}
                                                                         <span class="h5">{{ bookmaker.markets.0.outcomes.1.point }}</span>
                                                                     </div>
                                                                 {% endif %}
@@ -542,12 +542,12 @@
                                                             <div class="d-block d-lg-flex">
                                                                 {% if bookmaker.markets.0.outcomes.0.point > 0 %}
                                                                 <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                    {% comment %}* AWAY POINT {% endcomment %}
-                                                                    <span class="h5">{{ bookmaker.markets.0.outcomes.0.point }}</span>
+                                                                    {% comment %}* UNDER {% endcomment %}
+                                                                    <span>U <span class="h5">{{ bookmaker.markets.0.outcomes.0.point }}</span></span>
                                                                 </div>
                                                                 {% else %}
                                                                 <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                    {% comment %}* AWAY POINT {% endcomment %}
+                                                                    {% comment %}TODO Dont think needed {% endcomment %}
                                                                     <span class="h5">{{ bookmaker.markets.0.outcomes.0.point }}</span>
                                                                 </div>
                                                                 {% endif %}
