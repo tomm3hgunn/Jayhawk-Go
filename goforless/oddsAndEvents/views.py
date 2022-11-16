@@ -20,12 +20,12 @@ def matches(request):
     totalsJson = oddTotals()
     moneylineJson = oddMoneyline()
     
-    sortSpreadsJson = sortSpreads()
-    sortTotalsJson = sortTotals()
-    sortMoneylineJson = sortMoneyline()
+    # This is taking too many requests from the API. Make a separate branch for this or do not commit to dev until this is feature complete.
+    # sortSpreadsJson = sortSpreads()
+    # sortTotalsJson = sortTotals()
+    # sortMoneylineJson = sortMoneyline()
     
-    variables = {"spreads": spreadsJson, "totals": totalsJson, "moneyline": moneylineJson, "sortedSpreads": sortSpreadsJson,
-                 "sortedTotals": sortTotalsJson, "sortedMoneyline": sortMoneylineJson, "books": books}
+    variables = {"spreads": spreadsJson, "totals": totalsJson, "moneyline": moneylineJson, "books": books}
     return render(request, "sportz/matches.html", variables)
 
 
