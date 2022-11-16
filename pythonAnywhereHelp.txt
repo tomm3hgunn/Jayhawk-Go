@@ -5,3 +5,6 @@
 
 - After adding run:
     python manage.py collectstatic
+
+- Pull data exactly
+git reset --hard

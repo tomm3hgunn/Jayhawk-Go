@@ -16,4 +16,3 @@
     * d-block: the element will be displayed as a block
     * d-lg-flex: the element will be displayed as a flex on large screens
     * align-items-center: the content of the element will be vertically centered
-    
