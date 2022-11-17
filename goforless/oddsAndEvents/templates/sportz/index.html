@@ -303,22 +303,17 @@
                                                 <div class="row bg-dark text-center ml-0 mr-0 py-2 my-match">
                                                     <div class="col-md-3 col-lg-3 mb-4 mb-lg-0">
                                                         <h3 class="h5 mb-0 text-white">
-                                                            Matchup
+                                                            Away Team
                                                         </h3>
                                                     </div>
                                                     <div class="col-md-6 col-lg-6 mb-4 mb-lg-0">
                                                         <h3 class="h5 mb-0 text-white">
-                                                            Sportsbook
+                                                            Game Time
                                                         </h3>
                                                     </div>
-                                                    <div class="col-md-1 col-lg-1 mb-4 mb-lg-0 ml-auto">
+                                                    <div class="col-md-3 col-lg-3 mb-4 mb-lg-0">
                                                         <h3 class="h5 mb-0 text-white">
-                                                            Points
-                                                        </h3>
-                                                    </div>
-                                                    <div class="col-md-1 col-lg-1 mb-4 mb-lg-0 mr-3">
-                                                        <h3 class="h5 mb-0 text-white">
-                                                            Price
+                                                            Home Team
                                                         </h3>
                                                     </div>
                                                 </div>
@@ -458,34 +453,20 @@
                                                     <div class="row bg-dark text-center ml-0 mr-0 py-2 my-match">
                                                         <div class="col-md-3 col-lg-3 mb-4 mb-lg-0">
                                                             <h3 class="h5 mb-0 text-white">
-                                                                Matchup
+                                                                Away Team
                                                             </h3>
                                                         </div>
                                                         <div class="col-md-6 col-lg-6 mb-4 mb-lg-0">
                                                             <h3 class="h5 mb-0 text-white">
-                                                                Sportsbook
+                                                                Score
                                                             </h3>
                                                         </div>
                                                         <div class="col-md-3 col-lg-3 mb-4 mb-lg-0">
                                                             <h3 class="h5 mb-0 text-white">
-                                                                Totals
+                                                                Home Team
                                                             </h3>
                                                         </div>
-                                                        {% comment %} <div class="col-md-1 col-lg-1 mb-4 mb-lg-0 mr-3">
-                                                            <h3 class="h5 mb-0 text-white">
-                                                                Over Price
-                                                            </h3>
-                                                        </div> {% endcomment %}
-                                                        {% comment %} <div class="col-md-1 col-lg-1 mb-4 mb-lg-0 ml-auto">
-                                                            <h3 class="h5 mb-0 text-white">
-                                                                Under Point
-                                                            </h3>
-                                                        </div> {% endcomment %}
-                                                        {% comment %} <div class="col-md-1 col-lg-1 mb-4 mb-lg-0 mr-3">
-                                                            <h3 class="h5 mb-0 text-white">
-                                                            Under Price
-                                                            </h3>
-                                                        </div> {% endcomment %}
+                                                    </div>
                                                 </div>
                                                 {% comment %} * API DISPLAY FOR TOTALS (OVER/UNDER) {% endcomment %}
                                                 {% for entry in totals %}
@@ -614,136 +595,7 @@
                                     </div>
                                 </div>
 
-                                    {% comment %}! PANE 3 {% endcomment %}
-                                    <div class="tab-pane fade"
-                                         id="pills-contact"
-                                         role="tabpanel"
-                                         aria-labelledby="pills-contact-tab">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-12">
-                                                <div class="row bg-white align-items-center ml-0 mr-0 py-4 match-entry">
-                                                    <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
-                                                        <div class="text-center text-lg-left">
-                                                            <div class="d-block d-lg-flex align-items-center">
-                                                                <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
-                                                                    <img src={% static "images/img_1_sq.jpg" %} alt="Image" class="img-fluid">
-                                                                </div>
-                                                                <div class="text">
-                                                                    <h3 class="h5 mb-0 text-black">
-                                                                        Packers
-                                                                    </h3>
-                                                                    <span class="text-uppercase small country">Brazil</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
-                                                        <div class="d-inline-block">
-                                                            <div class="bg-black py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                <span class="h5">3:2</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 col-lg-4 text-center text-lg-right">
-                                                        <div class="">
-                                                            <div class="d-block d-lg-flex align-items-center">
-                                                                <div class="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
-                                                                    <img src={% static "images/img_4_sq.jpg" %} alt="Image" class="img-fluid">
-                                                                </div>
-                                                                <div class="text order-1 w-100">
-                                                                    <h3 class="h5 mb-0 text-black">
-                                                                        Steelers
-                                                                    </h3>
-                                                                    <span class="text-uppercase small country">London</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- END row -->
-                                                <div class="row bg-white align-items-center ml-0 mr-0 py-4 match-entry">
-                                                    <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
-                                                        <div class="text-center text-lg-left">
-                                                            <div class="d-block d-lg-flex align-items-center">
-                                                                <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
-                                                                    <img src={% static "images/img_1_sq.jpg" %} alt="Image" class="img-fluid">
-                                                                </div>
-                                                                <div class="text">
-                                                                    <h3 class="h5 mb-0 text-black">
-                                                                        Patriots
-                                                                    </h3>
-                                                                    <span class="text-uppercase small country">Brazil</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
-                                                        <div class="d-inline-block">
-                                                            <div class="bg-black py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                <span class="h5">3:2</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 col-lg-4 text-center text-lg-right">
-                                                        <div class="">
-                                                            <div class="d-block d-lg-flex align-items-center">
-                                                                <div class="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
-                                                                    <img src={% static "images/img_4_sq.jpg" %} alt="Image" class="img-fluid">
-                                                                </div>
-                                                                <div class="text order-1 w-100">
-                                                                    <h3 class="h5 mb-0 text-black">
-                                                                        Cowboys
-                                                                    </h3>
-                                                                    <span class="text-uppercase small country">London</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- END row -->
-                                                <div class="row bg-white align-items-center ml-0 mr-0 py-4 match-entry">
-                                                    <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
-                                                        <div class="text-center text-lg-left">
-                                                            <div class="d-block d-lg-flex align-items-center">
-                                                                <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
-                                                                    <img src={% static "images/img_1_sq.jpg" %} alt="Image" class="img-fluid">
-                                                                </div>
-                                                                <div class="text">
-                                                                    <h3 class="h5 mb-0 text-black">
-                                                                        Raiders
-                                                                    </h3>
-                                                                    <span class="text-uppercase small country">Brazil</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
-                                                        <div class="d-inline-block">
-                                                            <div class="bg-black py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                <span class="h5">3:2</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 col-lg-4 text-center text-lg-right">
-                                                        <div class="">
-                                                            <div class="d-block d-lg-flex align-items-center">
-                                                                <div class="image image-small ml-lg-3 mb-3 mb-lg-0 order-2">
-                                                                    <img src={% static "images/img_4_sq.jpg" %} alt="Image" class="img-fluid">
-                                                                </div>
-                                                                <div class="text order-1 w-100">
-                                                                    <h3 class="h5 mb-0 text-black">
-                                                                        Chiefs
-                                                                    </h3>
-                                                                    <span class="text-uppercase small country">London</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- END row -->
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
