@@ -24,7 +24,7 @@ def formatDate(value):
 @register.filter(name="hillToCaesars")
 def hillToCaesers(value):
     """Converts William Hill (US) to Caesars Sportsbook"""
-    # convert to datetime object
+
     bookmaker = value
 
     if bookmaker == "William Hill (US)":
