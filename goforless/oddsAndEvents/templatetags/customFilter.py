@@ -12,9 +12,22 @@ def formatDate(value):
     date = datetime.datetime.strptime(value, "%Y-%m-%dT%H:%M:%SZ")
 
     # convert to Central Standard Time
-    date = date.replace(tzinfo=pytz.utc).astimezone(pytz.timezone("US/Central"))
+    date = date.replace(tzinfo=pytz.utc).astimezone(
+        pytz.timezone("US/Central"))
 
     # format date
     date = date.strftime("%B %d %I:%M %p")
 
     return date
+
+
+@register.filter(name="hillToCaesers")
+def hillToCaesers(value):
+    """Converts William Hill (US) to Caesars Sportsbook"""
+    # convert to datetime object
+    bookmaker = value
+
+    if bookmaker == "William Hill (US)":
+        bookmaker = "Caesars Sportsbook"
+
+    return bookmaker

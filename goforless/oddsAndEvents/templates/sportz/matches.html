@@ -355,7 +355,7 @@
                                                                                 {% endwith %}
                                                                             </div>
                                                                             {% comment %}* SPORTSBOOK NAME {% endcomment %}
-                                                                            <span class="text-uppercase small country text-muted">{{ bookmaker.title }}</span>
+                                                                            <span class="text-uppercase small country text-muted">{{ bookmaker.title|hillToCaesers }}</span>
                                                                             <br>
                                                                             <div class="text-uppercase small last-update">updated: {{ bookmaker.last_update|formatDate }} CST</div>
                                                                         </div>
@@ -519,7 +519,7 @@
                                                                 {% endwith %}
                                                             </div>
                                                             {% comment %}* SPORTSBOOK NAME {% endcomment %}
-                                                            <span class="text-uppercase small country text-muted">{{ bookmaker.title }}</span>
+                                                            <span class="text-uppercase small country text-muted">{{ bookmaker.title|hillToCaesers }}</span>
                                                             <br>
                                                                             <div class="text-uppercase small last-update">updated: {{ bookmaker.last_update|formatDate }} CST</div>
                                                         </div>
