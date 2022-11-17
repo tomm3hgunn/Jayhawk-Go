@@ -21,7 +21,7 @@ def formatDate(value):
     return date
 
 
-@register.filter(name="hillToCaesers")
+@register.filter(name="hillToCaesars")
 def hillToCaesers(value):
     """Converts William Hill (US) to Caesars Sportsbook"""
     # convert to datetime object
