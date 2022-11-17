@@ -1,4 +1,5 @@
 {% load static %}
+{% load customFilter %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -384,9 +385,8 @@
 
                                                                         {% comment %}* GAME TIME INFO {% endcomment %}
                                                                         <div class="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
-                                                                            {% comment %}* DATE {% endcomment %}
-                                                                            {% comment %}* {{ entry.commence_time|formatDate }} {% endcomment %}
-                                                                            <span class="text-uppercase small country text-muted">Starts: {{ entry.commence_time }} CST</span>
+                                                                            {% comment %}* DATE {% endcomment %}                                                                    
+                                                                            <span class="text-uppercase small country text-muted">Starts: {{ entry.commence_time|formatDate }} CST</span>
                                                         
                                                                         </div>
                                                               
@@ -506,9 +506,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
-                                                            {% comment %}* DATE {% endcomment %}
-                                                            {% comment %}* {{ entry.commence_time|formatDate }} {% endcomment %}
-                                                            <span class="text-uppercase small country text-muted">Starts: {{ entry.commence_time }} CST</span>
+                                                            {% comment %}* DATE {% endcomment %}                                                            
+                                                            <span class="text-uppercase small country text-muted">Starts: {{ entry.commence_time|formatDate }} CST</span>
                                                             <div class="image image-small mx-auto mb-3 mb-lg-0">
                                                                 {% comment %}* SPORTSBOOK IMAGE {% endcomment %}
                                                                 {%with bookImage=bookmaker.title|lower|cut:" "|add:".png"%}
