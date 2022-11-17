@@ -5,10 +5,14 @@ from .services import *
 
 # Create your views here.
 
-books = ["fanduel", "barstoolsportsbook", "williamhill(us)", "draftkings", "betmgm"]
+books = ["fanduel", "barstoolsportsbook",
+         "williamhill(us)", "draftkings", "betmgm"]
+
 
 def index(request):
-    return render(request, "sportz/index.html")
+    scoresJson = scoresSearch()
+    variables = {"scores": scoresJson}
+    return render(request, "sportz/index.html", variables)
 
 
 def news(request):
@@ -19,13 +23,14 @@ def matches(request):
     spreadsJson = oddSpreads()
     totalsJson = oddTotals()
     moneylineJson = oddMoneyline()
-    
+
     # This is taking too many requests from the API. Make a separate branch for this or do not commit to dev until this is feature complete.
     # sortSpreadsJson = sortSpreads()
     # sortTotalsJson = sortTotals()
     # sortMoneylineJson = sortMoneyline()
-    
-    variables = {"spreads": spreadsJson, "totals": totalsJson, "moneyline": moneylineJson, "books": books}
+
+    variables = {"spreads": spreadsJson, "totals": totalsJson,
+                 "moneyline": moneylineJson, "books": books}
     return render(request, "sportz/matches.html", variables)
 
 
@@ -40,9 +45,11 @@ def about(request):
 def contact(request):
     return render(request, "sportz/contact.html")
 
+
 def matchup(request, homeTeam, awayTeam):
     spreadsJson = oddSpreads()
     totalsJson = oddTotals()
     moneylineJson = oddMoneyline()
-    variables = {"spreads": spreadsJson, "totals": totalsJson, "moneyline": moneylineJson, "books": books, "homeTeam": homeTeam, "awayTeam": awayTeam}
+    variables = {"spreads": spreadsJson, "totals": totalsJson, "moneyline": moneylineJson,
+                 "books": books, "homeTeam": homeTeam, "awayTeam": awayTeam}
     return render(request, "sportz/matchup.html", variables)
