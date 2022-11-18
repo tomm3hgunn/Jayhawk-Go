@@ -78,3 +78,10 @@
     pass: Jayhawk2022
 - Give dashboard access to our model databases (in admin.py)
     admin.site.register(ToDoList)
+
+### Requirements TXT ###
+- Start in project folder with manage.py
+- Create requirements.txt
+    pip freeze > requirements.txt
+- Install requirements.txt
+    pip install -r requirements.txt
