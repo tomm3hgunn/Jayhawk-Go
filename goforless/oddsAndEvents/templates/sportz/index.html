@@ -346,7 +346,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-2 ml-auto">                                   
+                                                                        <div class="col-md-4 col-lg-2 text-center mb-4 mb-lg-0">
                                                                             <div class="d-block d-lg-flex">
                                                                                 {% if entry.scores.1.score > entry.scores.0.score %}
                                                                                 <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
@@ -355,22 +355,22 @@
                                                                                 </div>
                                                                                 {% else %}
                                                                                 <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                                    {% comment %}TODO Dont think needed {% endcomment %}
+                                                                                    {% comment %}* AWAY TEAM SCORE {% endcomment %}
                                                                                     <span class="h5">{{ entry.scores.1.score }}</span>
                                                                                 </div>
                                                                                 {% endif %}
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-1 mr-4">    
+                                                                        <div class="col-md-4 col-lg-2 text-center mb-4 mb-lg-0">
                                                                             <div class="d-block d-lg-flex">
                                                                                 {% if entry.scores.1.score < entry.scores.0.score %}
                                                                                 <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                                    {% comment %}* AWAY PRICE {% endcomment %}
+                                                                                    {% comment %}* HOME TEAM SCORE {% endcomment %}
                                                                                     <span class="h5">{{ entry.scores.0.score }}</span>
                                                                                 </div>
                                                                                 {% else %}
                                                                                 <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                                    {% comment %}* AWAY PRICE {% endcomment %}
+                                                                                    {% comment %}* HOME TEAM SCORE {% endcomment %}
                                                                                     <span class="h5">{{ entry.scores.0.score }}</span>
                                                                                 </div>
                                                                                 {% endif %}
