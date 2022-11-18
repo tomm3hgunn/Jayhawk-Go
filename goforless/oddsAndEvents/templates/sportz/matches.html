@@ -356,7 +356,7 @@
                                                                 <div class="d-block d-lg-flex align-items-center">
                                                                     <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
                                                                         {% comment %}* HOME IMAGE {% endcomment %}
-                                                                        {% with teamImage=entry.home_team|lower|cut:" "|add:".png"%}
+                                                                        {% with teamImage=entry.home_team|cut:" "|add:".png"%}
                                                                         {% with imagePath="images/"|add:teamImage%}
                                                                         <img src={% static imagePath %} alt="Image" class="img-fluid">
                                                                         {% endwith %}
@@ -374,7 +374,7 @@
                                                                 <div class="d-block d-lg-flex align-items-center">
                                                                     <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
                                                                         {% comment %}* AWAY TEAM IMAGE{% endcomment %}
-                                                                        {% with teamImage=entry.away_team|lower|cut:" "|add:".png"%}
+                                                                        {% with teamImage=entry.away_team|cut:" "|add:".png"%}
                                                                         {% with imagePath="images/"|add:teamImage%}
                                                                         <img src={% static imagePath %} alt="Image" class="img-fluid">
                                                                         {% endwith %}
@@ -394,7 +394,7 @@
                                                             <span class="text-uppercase small country text-muted">Starts: {{ entry.commence_time|formatDate }} CST</span>
                                                             <div class="image image-small mx-auto mb-3 mb-lg-0">
                                                                 {% comment %}* SPORTSBOOK IMAGE {% endcomment %}
-                                                                {%with bookImage=bookmaker.title|lower|cut:" "|add:".png"%}
+                                                                {%with bookImage=bookmaker.title|cut:" "|add:".png"%}
                                                                 {% with imagePath="images/"|add:bookImage%}
                                                                 <img src={% static imagePath %} alt="Image" class="img-fluid">
                                                                 {% endwith %}
