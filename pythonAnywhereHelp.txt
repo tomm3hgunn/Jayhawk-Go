@@ -1,0 +1,10 @@
+### Do the following after git cloning repo ###
+- In settings.py add:
+    STATIC_ROOT = "/home/tomm3hgunn/Jayhawk-Go/goforless/static"
+    STATIC_URL = "/static/"
+
+- After adding run:
+    python manage.py collectstatic
+
+- Pull data exactly
+git reset --hard

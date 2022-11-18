@@ -1,0 +1,18 @@
+### Bootstrap Properties ###
+- Example: col-md-4 col-lg-4 mb-4 mb-lg-0
+    * col-md-4: the column will be 4/12 of the width of the screen on medium screens
+    * col-lg-4: the column will be 4/12 of the width of the screen on large screens
+    * mb-4: the column will have 4 units of margin on the bottom
+    * mb-lg-0: the column will have 0 units of margin on the bottom on large screens
+- Example: row bg-white align-items-center ml-0 mr-0 py-4 match-entry
+    * row: this is a row
+    * bg-white: the background of the row will be white
+    * align-items-center: the content of the row will be vertically centered
+    * ml-0: the row will have 0 units of margin on the left
+    * mr-0: the row will have 0 units of margin on the right
+    * py-4: the row will have 4 units of padding on the top and bottom
+    * match-entry: this is a match entry
+- Example: d-block d-lg-flex align-items-center
+    * d-block: the element will be displayed as a block
+    * d-lg-flex: the element will be displayed as a flex on large screens
+    * align-items-center: the content of the element will be vertically centered

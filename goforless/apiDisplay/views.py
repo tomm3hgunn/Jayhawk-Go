@@ -21,13 +21,6 @@ def totals(request):
     variables = {"data": json}
     return render(request, "apiDisplay/totals.html", variables)
 
-
-def outrights(request):
-    json = oddOutrights()
-    variables = {"data": json}
-    return render(request, "apiDisplay/outrights.html", variables)
-
-
 def moneyline(request):
     json = oddMoneyline()
     variables = {"data": json}
