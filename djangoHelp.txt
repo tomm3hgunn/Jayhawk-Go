@@ -85,3 +85,6 @@
     pip freeze > requirements.txt
 - Install requirements.txt
     pip install -r requirements.txt
+
+### If you get the error "django.core.exceptions.ImproperlyConfigured: WSGI application 'goforless.wsgi.application' could not be loaded; Error importing module." ###
+- In terminal run pip3 install whitenoise
