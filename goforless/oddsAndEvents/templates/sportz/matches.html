@@ -37,9 +37,7 @@
                 <div class="py-3">
                     <div class="container">
                         <div class="row align-items-center">
-                            <div class="col-6 col-md-3">
-                                {% comment %} LEFT BLANK TO PRESERVE ALIGNMENT FOR RIGHT SIDE {% endcomment %}
-                            </div>
+                            <div class="col-6 col-md-3">{% comment %} LEFT BLANK TO PRESERVE ALIGNMENT FOR RIGHT SIDE {% endcomment %}</div>
                             <div class="col-6 col-md-9 text-right">
                                 <div class="d-inline-block">
                                     <a href="#" class="text-secondary p-2 d-flex align-items-center"><span class="icon-envelope mr-3"></span> <span class="d-none d-md-block">youremail@domain.com</span></a>
@@ -88,24 +86,17 @@
                         <div class="col-md-6 text-center text-md-left"
                              data-aos="fade-up"
                              data-aos-delay="400">
-                            <h1 class="bg-text-line">
-                                Matches
-                            </h1>
-                            <p class="mt-4">
-                                Latest sportsbook data on spreads, totals, and moneylines.
-                            </p>
+                            <h1 class="bg-text-line">Matches</h1>
+                            <p class="mt-4">Latest sportsbook data on spreads, totals, and moneylines.</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="site-section site-blocks-vs">
                 <div class="container">
-
                     <div class="row">
                         <div class="col-md-12">
-                            <h2 class="h6 text-uppercase text-black font-weight-bold mb-3">
-                                Latest Matches
-                            </h2>
+                            <h2 class="h6 text-uppercase text-black font-weight-bold mb-3">Latest Matches</h2>
                             <div class="site-block-tab">
                                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                     <li class="nav-item">
@@ -147,149 +138,145 @@
                                                 {% comment %}* CUSTOM ROW {% endcomment %}
                                                 <div class="row bg-dark text-center ml-0 mr-0 py-2 my-match d-none d-md-flex">
                                                     <div class="col-md-3 col-lg-3 mb-4 mb-lg-0">
-                                                        <h3 class="h5 mb-0 text-white">
-                                                            Matchup
-                                                        </h3>
+                                                        <h3 class="h5 mb-0 text-white">Matchup</h3>
                                                     </div>
                                                     <div class="col-md-6 col-lg-6 mb-4 mb-lg-0">
-                                                        <h3 class="h5 mb-0 text-white">
-                                                            Sportsbook
-                                                        </h3>
+                                                        <h3 class="h5 mb-0 text-white">Sportsbook</h3>
                                                     </div>
                                                     <div class="col-md-1 col-lg-1 mb-4 mb-lg-0 ml-auto">
-                                                        <h3 class="h5 mb-0 text-white">
-                                                            Points
-                                                        </h3>
+                                                        <h3 class="h5 mb-0 text-white">Points</h3>
                                                     </div>
                                                     <div class="col-md-1 col-lg-1 mb-4 mb-lg-0 mr-2">
-                                                        <h3 class="h5 mb-0 text-white">
-                                                            Price
-                                                        </h3>
+                                                        <h3 class="h5 mb-0 text-white">Price</h3>
                                                     </div>
                                                 </div>
                                                 {% comment %}* API DISPLAY FOR SPREADS {% endcomment %}
                                                 {% for entry in spreads %}
                                                     {% for bookmaker in entry.bookmakers %}
-                                                                {% comment %} url goes to dynamic page with home and away team {% endcomment %}
-                                                                <a href="{% url 'matchup' entry.home_team entry.away_team %}">
-                                                                    <div class="row bg-white align-items-center ml-0 mr-0 py-2 match-entry">
-                                                                        <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
-                                                                            <div class="text-center text-lg-left py-2">
-                                                                                <div class="d-block d-lg-flex align-items-center">
-                                                                                    <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
-                                                                                        {% comment %}* AWAY TEAM IMAGE{% endcomment %}
-                                                                                        {% with teamImage=entry.away_team|cut:" "|add:".png" %}
-                                                                                            {% with imagePath="images/"|add:teamImage %}
-                                                                                                <img src={% static imagePath %} alt="Image" class="img-fluid">
-                                                                                            {% endwith %}
-                                                                                        {% endwith %}
-                                                                                    </div>
-                                                                                    <div class="text">
-                                                                                        <h3 class="h5 mb-0 text-black">
-                                                                                            {% comment %}* AWAY TEAM {% endcomment %}
-                                                                                            {{ entry.away_team }}
-                                                                                        </h3>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="text-center text-lg-left">
-                                                                                <div class="d-block d-lg-flex align-items-center">
-                                                                                    <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
-                                                                                        {% comment %}* HOME IMAGE {% endcomment %}
-                                                                                        {% with teamImage=entry.home_team|cut:" "|add:".png" %}
-                                                                                            {% with imagePath="images/"|add:teamImage %}
-                                                                                                <img src={% static imagePath %} alt="Image" class="img-fluid">
-                                                                                            {% endwith %}
-                                                                                        {% endwith %}
-                                                                                    </div>
-                                                                                    <div class="text">
-                                                                                        <h3 class="h5 mb-0 text-black">
-                                                                                            {% comment %}* HOME TEAM {% endcomment %}
-                                                                                            {{ entry.home_team }}
-                                                                                        </h3>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
-                                                                            {% comment %}* DATE {% endcomment %}
-                                                                            <span class="text-uppercase small country text-muted">Starts: {{ entry.commence_time|formatDate }} CST</span>
-                                                                            <div class="image image-small mx-auto mb-3 mb-lg-0">
-                                                                                {% comment %}* SPORTSBOOK IMAGE {% endcomment %}
-                                                                                {% with bookImage=bookmaker.title|cut:" "|add:".png" %}
-                                                                                    {% with imagePath="images/"|add:bookImage %}
+                                                        {% comment %} url goes to dynamic page with home and away team {% endcomment %}
+                                                        <a href="{% url 'matchup' entry.home_team entry.away_team %}">
+                                                            <div class="row bg-white align-items-center ml-0 mr-0 py-2 match-entry">
+                                                                <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
+                                                                    <div class="text-center text-lg-left py-2">
+                                                                        <div class="d-block d-lg-flex align-items-center">
+                                                                            <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
+                                                                                {% comment %}* AWAY TEAM IMAGE{% endcomment %}
+                                                                                {% with teamImage=entry.away_team|cut:" "|add:".png" %}
+                                                                                    {% with imagePath="images/"|add:teamImage %}
                                                                                         <img src={% static imagePath %} alt="Image" class="img-fluid">
                                                                                     {% endwith %}
                                                                                 {% endwith %}
                                                                             </div>
-                                                                            {% comment %}* SPORTSBOOK NAME {% endcomment %}
-                                                                            <span class="text-uppercase small country text-muted">{{ bookmaker.title|hillToCaesars }}</span>
-                                                                            <br>
-                                                                            <div class="text-uppercase small last-update">updated: {{ bookmaker.last_update|formatDate }} CST</div>
+                                                                            <div class="text">
+                                                                                <h3 class="h5 mb-0 text-black">
+                                                                                    {% comment %}* AWAY TEAM {% endcomment %}
+                                                                                    {{ entry.away_team }}
+                                                                                </h3>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-4 m-auto">
-                                                                            <div class="text-center d-flex ml-md-auto justify-content-sm-center justify-content-md-end">
-                                                                                <div class="pr-2">
-                                                                                    <div class="d-block d-lg-flex py-2">
-                                                                                        {% if bookmaker.markets.0.outcomes.0.point > 0 %}
-                                                                                            <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                                                {% comment %}* AWAY POINT {% endcomment %}
-                                                                                                <span class="h5">{{ bookmaker.markets.0.outcomes.0.point }}</span>
-                                                                                            </div>
-                                                                                        {% else %}
-                                                                                            <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                                                {% comment %}* AWAY POINT {% endcomment %}
-                                                                                                <span class="h5">{{ bookmaker.markets.0.outcomes.0.point }}</span>
-                                                                                            </div>
-                                                                                        {% endif %}
-                                                                                    </div>
-                                                                                    <div class="d-block d-lg-flex">
-                                                                                        {% if bookmaker.markets.0.outcomes.1.point > 0 %}
-                                                                                            <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                                                {% comment %}* HOME POINT {% endcomment %}
-                                                                                                <span class="h5">{{ bookmaker.markets.0.outcomes.1.point }}</span>
-                                                                                            </div>
-                                                                                        {% else %}
-                                                                                            <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                                                {% comment %}* HOME POINT {% endcomment %}
-                                                                                                <span class="h5">{{ bookmaker.markets.0.outcomes.1.point }}</span>
-                                                                                            </div>
-                                                                                        {% endif %}
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="">
+                                                                    </div>
+                                                                    <div class="text-center text-lg-left">
+                                                                        <div class="d-block d-lg-flex align-items-center">
+                                                                            <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
+                                                                                {% comment %}* HOME IMAGE {% endcomment %}
+                                                                                {% with teamImage=entry.home_team|cut:" "|add:".png" %}
+                                                                                    {% with imagePath="images/"|add:teamImage %}
+                                                                                        <img src={% static imagePath %} alt="Image" class="img-fluid">
+                                                                                    {% endwith %}
+                                                                                {% endwith %}
+                                                                            </div>
+                                                                            <div class="text">
+                                                                                <h3 class="h5 mb-0 text-black">
+                                                                                    {% comment %}* HOME TEAM {% endcomment %}
+                                                                                    {{ entry.home_team }}
+                                                                                </h3>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
+                                                                    {% comment %}* DATE {% endcomment %}
+                                                                    <span class="text-uppercase small country text-muted">Starts: {{ entry.commence_time|formatDate }} CST</span>
+                                                                    <div class="image image-small mx-auto mb-3 mb-lg-0">
+                                                                        {% comment %}* SPORTSBOOK IMAGE {% endcomment %}
+                                                                        {% with bookImage=bookmaker.title|cut:" "|add:".png" %}
+                                                                            {% with imagePath="images/"|add:bookImage %}
+                                                                                <img src={% static imagePath %} alt="Image" class="img-fluid">
+                                                                            {% endwith %}
+                                                                        {% endwith %}
+                                                                    </div>
+                                                                    {% comment %}* SPORTSBOOK NAME {% endcomment %}
+                                                                    <span class="text-uppercase small country text-muted">{{ bookmaker.title|hillToCaesars }}</span>
+                                                                    <br>
+                                                                    <div class="text-uppercase small last-update">updated: {{ bookmaker.last_update|formatDate }} CST</div>
+                                                                </div>
+                                                                <div class="col-4 m-auto">
+                                                                    <div class="text-center d-flex ml-md-auto justify-content-sm-center justify-content-md-end">
+                                                                        <div class="pr-2">
                                                                             <div class="d-block d-lg-flex py-2">
-                                                                                {% if bookmaker.markets.0.outcomes.0.price > 0 %}
+                                                                                {% with homeDict=bookmaker.markets.0.outcomes|getHomeTeam:entry.home_team %}
+                                                                                {% with awayDict=bookmaker.markets.0.outcomes|getHomeTeam:entry.away_team %}
+                                                                                {% if awayDict.point > 0 %}
                                                                                     <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                                        {% comment %}* AWAY PRICE {% endcomment %}
-                                                                                        <span class="h5">{{ bookmaker.markets.0.outcomes.0.price }}</span>
+                                                                                        {% comment %}* AWAY POINT {% endcomment %}
+                                                                                        <span class="h5">{{ awayDict.point }}</span>
                                                                                     </div>
                                                                                 {% else %}
                                                                                     <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                                        {% comment %}* AWAY PRICE {% endcomment %}
-                                                                                        <span class="h5">{{ bookmaker.markets.0.outcomes.0.price }}</span>
+                                                                                        {% comment %}* AWAY POINT {% endcomment %}
+                                                                                        <span class="h5">{{ awayDict.point }}</span>
                                                                                     </div>
                                                                                 {% endif %}
                                                                             </div>
                                                                             <div class="d-block d-lg-flex">
-                                                                                {% if bookmaker.markets.0.outcomes.1.price > 0 %}
+                                                                                {% if homeDict.point > 0 %}
+                                                                                    <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                        {% comment %}* HOME POINT {% endcomment %}
+                                                                                        <span class="h5">{{ homeDict.point }}</span>
+                                                                                    </div>
+                                                                                {% else %}
+                                                                                    <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                        {% comment %}* HOME POINT {% endcomment %}
+                                                                                        <span class="h5">{{ homeDict.point }}</span>
+                                                                                    </div>
+                                                                                {% endif %}
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="">
+                                                                            <div class="d-block d-lg-flex py-2">
+                                                                                {% if awayDict.price > 0 %}
+                                                                                    <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                        {% comment %}* AWAY PRICE {% endcomment %}
+                                                                                        <span class="h5">{{ awayDict.price }}</span>
+                                                                                    </div>
+                                                                                {% else %}
+                                                                                    <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                        {% comment %}* AWAY PRICE {% endcomment %}
+                                                                                        <span class="h5">{{ awayDict.price }}</span>
+                                                                                    </div>
+                                                                                {% endif %}
+                                                                            </div>
+                                                                            <div class="d-block d-lg-flex">
+                                                                                {% if homeDict.price > 0 %}
                                                                                     <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
                                                                                         {% comment %}* HOME PRICE {% endcomment %}
-                                                                                        <span class="h5">{{ bookmaker.markets.0.outcomes.1.price }}</span>
+                                                                                        <span class="h5">{{ homeDict.price }}</span>
                                                                                     </div>
                                                                                 {% else %}
                                                                                     <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
                                                                                         {% comment %}* HOME PRICE {% endcomment %}
-                                                                                        <span class="h5">{{ bookmaker.markets.0.outcomes.1.price }}</span>
+                                                                                        <span class="h5">{{ homeDict.price }}</span>
                                                                                     </div>
                                                                                 {% endif %}
                                                                             </div>
-                                                                                </div>
-                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                    {% comment %}* CUSTOM ROW END {% endcomment %}
-                                                                </a>
+                                                                </div>
+                                                            </div>
+                                                            {% comment %}* CUSTOM ROW END {% endcomment %}
+                                                        </a>
+                                                        {% endwith %}
+                                                        {% endwith %}
                                                     {% endfor %}
                                                 {% endfor %}
                                             </div>
@@ -302,165 +289,165 @@
                                          aria-labelledby="pills-profile-tab">
                                         <div class="row align-items-center">
                                             <div class="col-md-12">
-                                                    {% comment %}* CUSTOM ROW {% endcomment %}
-                                                    <div class="row bg-dark text-center ml-0 mr-0 py-2 my-match">
-                                                        <div class="col-md-3 col-lg-3 mb-4 mb-lg-0">
-                                                            <h3 class="h5 mb-0 text-white">
-                                                                Matchup
-                                                            </h3>
-                                                        </div>
-                                                        <div class="col-md-6 col-lg-6 mb-4 mb-lg-0">
-                                                            <h3 class="h5 mb-0 text-white">
-                                                                Sportsbook
-                                                            </h3>
-                                                        </div>
-                                                        <div class="col-md-3 col-lg-3 mb-4 mb-lg-0">
-                                                            <h3 class="h5 mb-0 text-white">
-                                                                Totals
-                                                            </h3>
-                                                        </div>
-                                                        {% comment %} <div class="col-md-1 col-lg-1 mb-4 mb-lg-0 mr-3">
+                                                {% comment %}* CUSTOM ROW {% endcomment %}
+                                                <div class="row bg-dark text-center ml-0 mr-0 py-2 my-match">
+                                                    <div class="col-md-3 col-lg-3 mb-4 mb-lg-0">
+                                                        <h3 class="h5 mb-0 text-white">
+                                                            Matchup
+                                                        </h3>
+                                                    </div>
+                                                    <div class="col-md-6 col-lg-6 mb-4 mb-lg-0">
+                                                        <h3 class="h5 mb-0 text-white">
+                                                            Sportsbook
+                                                        </h3>
+                                                    </div>
+                                                    <div class="col-md-3 col-lg-3 mb-4 mb-lg-0">
+                                                        <h3 class="h5 mb-0 text-white">
+                                                            Totals
+                                                        </h3>
+                                                    </div>
+                                                    {% comment %} <div class="col-md-1 col-lg-1 mb-4 mb-lg-0 mr-3">
                                                             <h3 class="h5 mb-0 text-white">
                                                                 Over Price
                                                             </h3>
-                                                        </div> {% endcomment %}
-                                                        {% comment %} <div class="col-md-1 col-lg-1 mb-4 mb-lg-0 ml-auto">
+                                                    </div> {% endcomment %}
+                                                    {% comment %} <div class="col-md-1 col-lg-1 mb-4 mb-lg-0 ml-auto">
                                                             <h3 class="h5 mb-0 text-white">
                                                                 Under Point
                                                             </h3>
-                                                        </div> {% endcomment %}
-                                                        {% comment %} <div class="col-md-1 col-lg-1 mb-4 mb-lg-0 mr-3">
+                                                    </div> {% endcomment %}
+                                                    {% comment %} <div class="col-md-1 col-lg-1 mb-4 mb-lg-0 mr-3">
                                                             <h3 class="h5 mb-0 text-white">
                                                             Under Price
                                                             </h3>
-                                                        </div> {% endcomment %}
+                                                    </div> {% endcomment %}
                                                 </div>
                                                 {% comment %} * API DISPLAY FOR TOTALS (OVER/UNDER) {% endcomment %}
                                                 {% for entry in totals %}
-                                                {%for bookmaker in entry.bookmakers%}
-                                                {% comment %} url goes to dynamic page with home and away team {% endcomment %}
-                                                <a href="{% url 'matchup' entry.home_team entry.away_team %}">
-                                                    <div class="row bg-white align-items-center ml-0 mr-0 py-2 match-entry">
-                                                        <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
-                                                            <div class="text-center text-lg-left py-2">
-                                                                <div class="d-block d-lg-flex align-items-center">
-                                                                    <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
-                                                                        {% comment %}* AWAY TEAM IMAGE{% endcomment %}
-                                                                        {% with teamImage=entry.away_team|cut:" "|add:".png"%}
-                                                                        {% with imagePath="images/"|add:teamImage%}
-                                                                        <img src={% static imagePath %} alt="Image" class="img-fluid">
+                                                    {% for bookmaker in entry.bookmakers %}
+                                                        {% comment %} url goes to dynamic page with home and away team {% endcomment %}
+                                                        <a href="{% url 'matchup' entry.home_team entry.away_team %}">
+                                                            <div class="row bg-white align-items-center ml-0 mr-0 py-2 match-entry">
+                                                                <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
+                                                                    <div class="text-center text-lg-left py-2">
+                                                                        <div class="d-block d-lg-flex align-items-center">
+                                                                            <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
+                                                                                {% comment %}* AWAY TEAM IMAGE{% endcomment %}
+                                                                                {% with teamImage=entry.away_team|cut:" "|add:".png" %}
+                                                                                    {% with imagePath="images/"|add:teamImage %}
+                                                                                        <img src={% static imagePath %} alt="Image" class="img-fluid">
+                                                                                    {% endwith %}
+                                                                                {% endwith %}
+                                                                            </div>
+                                                                            <div class="text">
+                                                                                <h3 class="h5 mb-0 text-black">
+                                                                                    {% comment %}* AWAY TEAM {% endcomment %}
+                                                                                    {{ entry.away_team }}
+                                                                                </h3>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="text-center text-lg-left">
+                                                                        <div class="d-block d-lg-flex align-items-center">
+                                                                            <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
+                                                                                {% comment %}* HOME IMAGE {% endcomment %}
+                                                                                {% with teamImage=entry.home_team|cut:" "|add:".png" %}
+                                                                                    {% with imagePath="images/"|add:teamImage %}
+                                                                                        <img src={% static imagePath %} alt="Image" class="img-fluid">
+                                                                                    {% endwith %}
+                                                                                {% endwith %}
+                                                                            </div>
+                                                                            <div class="text">
+                                                                                <h3 class="h5 mb-0 text-black">
+                                                                                    {% comment %}* HOME TEAM {% endcomment %}
+                                                                                    {{ entry.home_team }}
+                                                                                </h3>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
+                                                                    {% comment %}* DATE {% endcomment %}
+                                                                    <span class="text-uppercase small country text-muted">Starts: {{ entry.commence_time|formatDate }} CST</span>
+                                                                    <div class="image image-small mx-auto mb-3 mb-lg-0">
+                                                                        {% comment %}* SPORTSBOOK IMAGE {% endcomment %}
+                                                                        {% with bookImage=bookmaker.title|cut:" "|add:".png" %}
+                                                                            {% with imagePath="images/"|add:bookImage %}
+                                                                                <img src={% static imagePath %} alt="Image" class="img-fluid">
+                                                                            {% endwith %}
                                                                         {% endwith %}
-                                                                        {% endwith %}
                                                                     </div>
-                                                                    <div class="text">
-                                                                        <h3 class="h5 mb-0 text-black">
-                                                                            {% comment %}* AWAY TEAM {% endcomment %}
-                                                                            {{ entry.away_team }}
-                                                                        </h3>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="text-center text-lg-left">
-                                                                <div class="d-block d-lg-flex align-items-center">
-                                                                    <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
-                                                                        {% comment %}* HOME IMAGE {% endcomment %}
-                                                                        {% with teamImage=entry.home_team|cut:" "|add:".png"%}
-                                                                        {% with imagePath="images/"|add:teamImage%}
-                                                                        <img src={% static imagePath %} alt="Image" class="img-fluid">
-                                                                        {% endwith %}
-                                                                        {% endwith %}
-                                                                    </div>
-                                                                    <div class="text">
-                                                                        <h3 class="h5 mb-0 text-black">
-                                                                            {% comment %}* HOME TEAM {% endcomment %}
-                                                                            {{ entry.home_team }}
-                                                                        </h3>
+                                                                    {% comment %}* SPORTSBOOK NAME {% endcomment %}
+                                                                    <span class="text-uppercase small country text-muted">{{ bookmaker.title|hillToCaesars }}</span>
+                                                                    <br>
+                                                                    <div class="text-uppercase small last-update">
+                                                                        updated: {{ bookmaker.last_update|formatDate }} CST
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
-                                                            {% comment %}* DATE {% endcomment %}
-                                                            <span class="text-uppercase small country text-muted">Starts: {{ entry.commence_time|formatDate }} CST</span>
-                                                            <div class="image image-small mx-auto mb-3 mb-lg-0">
-                                                                {% comment %}* SPORTSBOOK IMAGE {% endcomment %}
-                                                                {%with bookImage=bookmaker.title|cut:" "|add:".png"%}
-                                                                {% with imagePath="images/"|add:bookImage%}
-                                                                <img src={% static imagePath %} alt="Image" class="img-fluid">
-                                                                {% endwith %}
-                                                                {% endwith %}
-                                                            </div>
-                                                            {% comment %}* SPORTSBOOK NAME {% endcomment %}
-                                                            <span class="text-uppercase small country text-muted">{{ bookmaker.title|hillToCaesars }}</span>
-                                                            <br>
-                                                                            <div class="text-uppercase small last-update">updated: {{ bookmaker.last_update|formatDate }} CST</div>
-                                                        </div>
-                                                        <div class="col-2 ml-auto">
-                                                            <div class="d-block d-lg-flex py-2">
-                                                                {% if bookmaker.markets.0.outcomes.1.point > 0 %}
-                                                                    <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                        {% comment %}* OVER {% endcomment %}
-                                                                        <span>O <span class="h5">{{ bookmaker.markets.0.outcomes.1.point }}</span></span>
+                                                                <div class="col-2 ml-auto">
+                                                                    <div class="d-block d-lg-flex py-2">
+                                                                        {% if bookmaker.markets.0.outcomes.1.point > 0 %}
+                                                                            <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                {% comment %}* OVER {% endcomment %}
+                                                                                <span>O <span class="h5">{{ bookmaker.markets.0.outcomes.1.point }}</span></span>
+                                                                            </div>
+                                                                        {% else %}
+                                                                            <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                {% comment %}TODO Dont think needed {% endcomment %}
+                                                                                <span class="h5">{{ bookmaker.markets.0.outcomes.1.point }}</span>
+                                                                            </div>
+                                                                        {% endif %}
                                                                     </div>
-                                                                {% else %}
-                                                                    <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                       {% comment %}TODO Dont think needed {% endcomment %}
-                                                                        <span class="h5">{{ bookmaker.markets.0.outcomes.1.point }}</span>
+                                                                    <div class="d-block d-lg-flex">
+                                                                        {% if bookmaker.markets.0.outcomes.0.point > 0 %}
+                                                                            <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                {% comment %}* UNDER {% endcomment %}
+                                                                                <span>U <span class="h5">{{ bookmaker.markets.0.outcomes.0.point }}</span></span>
+                                                                            </div>
+                                                                        {% else %}
+                                                                            <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                {% comment %}TODO Dont think needed {% endcomment %}
+                                                                                <span class="h5">{{ bookmaker.markets.0.outcomes.0.point }}</span>
+                                                                            </div>
+                                                                        {% endif %}
                                                                     </div>
-                                                                {% endif %}
+                                                                </div>
+                                                                <div class="col-1 mr-4">
+                                                                    <div class="d-block d-lg-flex py-2">
+                                                                        {% if bookmaker.markets.0.outcomes.1.price > 0 %}
+                                                                            <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                {% comment %}* HOME PRICE {% endcomment %}
+                                                                                <span class="h5">{{ bookmaker.markets.0.outcomes.1.price }}</span>
+                                                                            </div>
+                                                                        {% else %}
+                                                                            <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                {% comment %}* HOME PRICE {% endcomment %}
+                                                                                <span class="h5">{{ bookmaker.markets.0.outcomes.1.price }}</span>
+                                                                            </div>
+                                                                        {% endif %}
+                                                                    </div>
+                                                                    <div class="d-block d-lg-flex">
+                                                                        {% if bookmaker.markets.0.outcomes.0.price > 0 %}
+                                                                            <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                {% comment %}* AWAY PRICE {% endcomment %}
+                                                                                <span class="h5">{{ bookmaker.markets.0.outcomes.0.price }}</span>
+                                                                            </div>
+                                                                        {% else %}
+                                                                            <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                {% comment %}* AWAY PRICE {% endcomment %}
+                                                                                <span class="h5">{{ bookmaker.markets.0.outcomes.0.price }}</span>
+                                                                            </div>
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div class="d-block d-lg-flex">
-                                                                {% if bookmaker.markets.0.outcomes.0.point > 0 %}
-                                                                <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                    {% comment %}* UNDER {% endcomment %}
-                                                                    <span>U <span class="h5">{{ bookmaker.markets.0.outcomes.0.point }}</span></span>
-                                                                </div>
-                                                                {% else %}
-                                                                <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                    {% comment %}TODO Dont think needed {% endcomment %}
-                                                                    <span class="h5">{{ bookmaker.markets.0.outcomes.0.point }}</span>
-                                                                </div>
-                                                                {% endif %}
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-1 mr-4">
-                                                            <div class="d-block d-lg-flex py-2">
-                                                                {% if bookmaker.markets.0.outcomes.1.price > 0 %}
-                                                                <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                    {% comment %}* HOME PRICE {% endcomment %}
-                                                                    <span class="h5">{{ bookmaker.markets.0.outcomes.1.price }}</span>
-                                                                </div>
-                                                                {% else %}
-                                                                <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                    {% comment %}* HOME PRICE {% endcomment %}
-                                                                    <span class="h5">{{ bookmaker.markets.0.outcomes.1.price }}</span>
-                                                                </div>
-
-                                                                {% endif %}
-                                                            </div>
-                                                            <div class="d-block d-lg-flex">
-                                                                {% if bookmaker.markets.0.outcomes.0.price > 0 %}
-                                                                <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                    {% comment %}* AWAY PRICE {% endcomment %}
-                                                                    <span class="h5">{{ bookmaker.markets.0.outcomes.0.price }}</span>
-                                                                </div>
-                                                                {% else %}
-                                                                <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                    {% comment %}* AWAY PRICE {% endcomment %}
-                                                                    <span class="h5">{{ bookmaker.markets.0.outcomes.0.price }}</span>
-                                                                </div>
-                                                                {% endif %}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    {% comment %}* CUSTOM ROW END {% endcomment %}
-                                                </a>
+                                                            {% comment %}* CUSTOM ROW END {% endcomment %}
+                                                        </a>
+                                                    {% endfor %}
                                                 {% endfor %}
-                                            {% endfor %}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
                                     {% comment %}! PANE 3 {% endcomment %}
                                     <div class="tab-pane fade"
                                          id="pills-contact"
