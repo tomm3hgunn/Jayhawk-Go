@@ -24,6 +24,8 @@ def oddSearch(region="us", markets="spreads"):
               "oddsFormat": "american", "bookmakers": "fanduel,barstool,williamhill_us,draftkings,betmgm"}
     baseUrl = f"https://api.the-odds-api.com/v4/sports/americanfootball_nfl/odds"
     response = requests.get(baseUrl, params=params)
+    remainingReq = response.headers["X-Requests-Remaining"]
+    print(f"Remaining Odds API requests: {remainingReq}")
     json = response.json()
     return json
 
