@@ -21,5 +21,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("apiDisplay/", include("apiDisplay.urls")),
     path("oddsAndEvents/", include("oddsAndEvents.urls")),
-    path('accounts/', include('allauth.urls')),  # Added for django-allauth
+
+    # Added for django-allauths
+    path('oddsAndEvents/accounts/', include('allauth.urls'))
 ]

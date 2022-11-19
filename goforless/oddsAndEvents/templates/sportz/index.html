@@ -1,5 +1,6 @@
 {% load static %}
 {% load customFilter %}
+{% load socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -75,6 +76,19 @@
                             <li>
                                 <a href="contact">Contact</a>
                             </li>
+                            {% if user.is_authenticated %}            
+                                <li class="has-children active">
+                                    <a href="#">Welcome, {{ user.username }} !</a>
+                                    <ul class="dropdown arrow-top">
+                                    <li><a href="#">Preferences</a></li>
+                                    <li><a href="accounts/logout">Log Out</a></li>
+                                    </ul>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <a href="accounts/login">Login to Odds and Events</a>
+                                </li>
+                            {% endif %}
                         </ul>
                     </div>
                 </nav>

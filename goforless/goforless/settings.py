@@ -153,7 +153,9 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/oddsAndEvents/index'
+LOGOUT_REDIRECT_URL = '/oddsAndEvents/index'
+
 
 # Additional configuration settings
 SOCIALACCOUNT_QUERY_EMAIL = True
