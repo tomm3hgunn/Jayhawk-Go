@@ -22,5 +22,4 @@ urlpatterns = [
     path("apiDisplay/", include("apiDisplay.urls")),
     path("oddsAndEvents/", include("oddsAndEvents.urls")),
     path('accounts/', include('allauth.urls')),  # Added for django-allauth
-    path('', include('main.urls')),  # Added for django-allauth
 ]
