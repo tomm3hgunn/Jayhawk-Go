@@ -12,8 +12,7 @@ def formatDate(value):
     date = datetime.datetime.strptime(value, "%Y-%m-%dT%H:%M:%SZ")
 
     # convert to Central Standard Time
-    date = date.replace(tzinfo=pytz.utc).astimezone(
-        pytz.timezone("US/Central"))
+    date = date.replace(tzinfo=pytz.utc).astimezone(pytz.timezone("US/Central"))
 
     # format date
     date = date.strftime("%B %d %I:%M %p")
@@ -31,3 +30,19 @@ def hillToCaesers(value):
         bookmaker = "Caesars Sportsbook"
 
     return bookmaker
+
+
+@register.filter(name="getHomeTeam")
+def getHomeTeam(outcomeList, homeTeam):
+    # input is a dictionary outcomes with two items
+    for outcome in outcomeList:
+        if outcome["name"] == homeTeam:
+            return outcome
+
+
+@register.filter(name="getAwayTeam")
+def getAwayTeam(outcomeList, awayTeam):
+    # input is a dictionary outcomes with two items
+    for outcome in outcomeList:
+        if outcome["name"] == awayTeam:
+            return outcome

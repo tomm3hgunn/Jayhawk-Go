@@ -36,12 +36,7 @@
                 <div class="py-3">
                     <div class="container">
                         <div class="row align-items-center">
-                            <div class="col-6 col-md-3">
-                                <a href="#" class="text-secondary px-2 pl-0"><span class="icon-facebook"></span></a>
-                                <a href="#" class="text-secondary px-2"><span class="icon-instagram"></span></a>
-                                <a href="#" class="text-secondary px-2"><span class="icon-twitter"></span></a>
-                                <a href="#" class="text-secondary px-2"><span class="icon-linkedin"></span></a>
-                            </div>
+                            <div class="col-6 col-md-3">{% comment %} LEFT BLANK TO PRESERVE ALIGNMENT FOR RIGHT SIDE {% endcomment %}</div>
                             <div class="col-6 col-md-9 text-right">
                                 <div class="d-inline-block">
                                     <a href="#" class="text-secondary p-2 d-flex align-items-center"><span class="icon-envelope mr-3"></span> <span class="d-none d-md-block">youremail@domain.com</span></a>
@@ -65,38 +60,13 @@
                             <a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a>
                         </div>
                         <ul class="site-menu js-clone-nav d-none d-md-block">
-                            <li class="has-children">
+                            <li>
                                 <a href="index">Home</a>
-                                <ul class="dropdown arrow-top">
-                                    <li>
-                                        <a href="#">Menu One</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Menu Two</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Menu Three</a>
-                                    </li>
-                                    <li class="has-children">
-                                        <a href="#">Sub Menu</a>
-                                        <ul class="dropdown">
-                                            <li>
-                                                <a href="#">Menu One</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Menu Two</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Menu Three</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
                             </li>
                             <li>
                                 <a href="matches">Matches</a>
                             </li>
-                            <li class="active">
+                            <li>
                                 <a href="about">About</a>
                             </li>
                             <li>
@@ -115,12 +85,8 @@
                         <div class="col-md-6 text-center text-md-left"
                              data-aos="fade-up"
                              data-aos-delay="400">
-                            <h1 class="bg-text-line">
-                                About Jayhawk GO
-                            </h1>
-                            <p class="mt-4">
-                                Meet the team that brought you Odds and Events.
-                            </p>
+                            <h1 class="bg-text-line">About Jayhawk GO</h1>
+                            <p class="mt-4">Meet the team that brought you Odds and Events.</p>
                         </div>
                     </div>
                 </div>
@@ -129,31 +95,22 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-6">
-                            <img src={% static "images/JG_Logo.png" %} alt="Image" class="img-fluid">
+                            <img src={% static "images/Jayhawk.png" %} alt="Image" class="img-fluid">
                         </div>
                         <div class="col-md-6 pl-md-5">
-                            <h2 class="text-black">
-                                About Us
-                            </h2>
-                            <p class="lead">
-                                Five KU EECS students taking a software engineering course.
-                            </p>
-                            <p>
-                                Mark Peterson, Thomas Nguyen, Wyatt Parsons, Nathan Smith, and Michael Mudd.
-                            </p>
+                            <h2 class="text-black">About Us</h2>
+                            <p class="lead">Five KU EECS students taking a software engineering course.</p>
+                            <p>Mark Peterson, Thomas Nguyen, Wyatt Parsons, Nathan Smith, and Michael Mudd.</p>
                         </div>
                     </div>
                 </div>
             </div>
-
             <footer class="site-footer border-top">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="mb-5">
-                                <h3 class="footer-heading mb-4">
-                                    About Odds and Events
-                                </h3>
+                                <h3 class="footer-heading mb-4">About Odds and Events</h3>
                                 <p>
                                     Created by the Jayhawk GO team, Odds and Events is the premier sports betting odds comparison application. Find the optimal odds for your next bet here.
                                 </p>
@@ -163,24 +120,14 @@
                         <div class="col-lg-4 mb-5 mb-lg-0">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h3 class="footer-heading mb-4">
-                                        Follow Us
-                                    </h3>
-                                    <div>
-                                        <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                                        <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-                                        <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-                                        <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
-                                    </div>
+                                    <img src={% static "images/JG_Logo.png" %} alt="">
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 mb-5 mb-lg-0">
                             <div class="mb-5">
                                 <div class="col-md-12">
-                                    <h3 class="footer-heading mb-4">
-                                        Quick Menu
-                                    </h3>
+                                    <h3 class="footer-heading mb-4">Quick Menu</h3>
                                 </div>
                                 <div class="col-md-6 col-lg-6">
                                     <ul class="list-unstyled">
