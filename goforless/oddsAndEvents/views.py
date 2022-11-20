@@ -46,6 +46,10 @@ def contact(request):
     return render(request, "sportz/contact.html")
 
 
+def preferences(request):
+    return render(request, "sportz/preferences.html")
+
+
 def matchup(request, homeTeam, awayTeam):
     spreadsJson = oddSpreads()
     totalsJson = oddTotals()
