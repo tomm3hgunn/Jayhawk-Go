@@ -215,67 +215,67 @@
                                                                         <div class="pr-2">
                                                                             <div class="d-block d-lg-flex py-2">
                                                                                 {% with homeDict=bookmaker.markets.0.outcomes|getHomeTeam:entry.home_team %}
-                                                                                {% with awayDict=bookmaker.markets.0.outcomes|getHomeTeam:entry.away_team %}
-                                                                                {% if awayDict.point > 0 %}
-                                                                                    <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                                        {% comment %}* AWAY POINT {% endcomment %}
-                                                                                        <span class="h5">{{ awayDict.point }}</span>
+                                                                                    {% with awayDict=bookmaker.markets.0.outcomes|getHomeTeam:entry.away_team %}
+                                                                                        {% if awayDict.point > 0 %}
+                                                                                            <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                                {% comment %}* AWAY POINT {% endcomment %}
+                                                                                                <span class="h5">{{ awayDict.point }}</span>
+                                                                                            </div>
+                                                                                        {% else %}
+                                                                                            <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                                {% comment %}* AWAY POINT {% endcomment %}
+                                                                                                <span class="h5">{{ awayDict.point }}</span>
+                                                                                            </div>
+                                                                                        {% endif %}
                                                                                     </div>
-                                                                                {% else %}
-                                                                                    <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                                        {% comment %}* AWAY POINT {% endcomment %}
-                                                                                        <span class="h5">{{ awayDict.point }}</span>
+                                                                                    <div class="d-block d-lg-flex">
+                                                                                        {% if homeDict.point > 0 %}
+                                                                                            <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                                {% comment %}* HOME POINT {% endcomment %}
+                                                                                                <span class="h5">{{ homeDict.point }}</span>
+                                                                                            </div>
+                                                                                        {% else %}
+                                                                                            <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                                {% comment %}* HOME POINT {% endcomment %}
+                                                                                                <span class="h5">{{ homeDict.point }}</span>
+                                                                                            </div>
+                                                                                        {% endif %}
                                                                                     </div>
-                                                                                {% endif %}
-                                                                            </div>
-                                                                            <div class="d-block d-lg-flex">
-                                                                                {% if homeDict.point > 0 %}
-                                                                                    <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                                        {% comment %}* HOME POINT {% endcomment %}
-                                                                                        <span class="h5">{{ homeDict.point }}</span>
+                                                                                </div>
+                                                                                <div class="">
+                                                                                    <div class="d-block d-lg-flex py-2">
+                                                                                        {% if awayDict.price > 0 %}
+                                                                                            <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                                {% comment %}* AWAY PRICE {% endcomment %}
+                                                                                                <span class="h5">{{ awayDict.price }}</span>
+                                                                                            </div>
+                                                                                        {% else %}
+                                                                                            <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                                {% comment %}* AWAY PRICE {% endcomment %}
+                                                                                                <span class="h5">{{ awayDict.price }}</span>
+                                                                                            </div>
+                                                                                        {% endif %}
                                                                                     </div>
-                                                                                {% else %}
-                                                                                    <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                                        {% comment %}* HOME POINT {% endcomment %}
-                                                                                        <span class="h5">{{ homeDict.point }}</span>
+                                                                                    <div class="d-block d-lg-flex">
+                                                                                        {% if homeDict.price > 0 %}
+                                                                                            <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                                {% comment %}* HOME PRICE {% endcomment %}
+                                                                                                <span class="h5">{{ homeDict.price }}</span>
+                                                                                            </div>
+                                                                                        {% else %}
+                                                                                            <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                                {% comment %}* HOME PRICE {% endcomment %}
+                                                                                                <span class="h5">{{ homeDict.price }}</span>
+                                                                                            </div>
+                                                                                        {% endif %}
                                                                                     </div>
-                                                                                {% endif %}
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="">
-                                                                            <div class="d-block d-lg-flex py-2">
-                                                                                {% if awayDict.price > 0 %}
-                                                                                    <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                                        {% comment %}* AWAY PRICE {% endcomment %}
-                                                                                        <span class="h5">{{ awayDict.price }}</span>
-                                                                                    </div>
-                                                                                {% else %}
-                                                                                    <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                                        {% comment %}* AWAY PRICE {% endcomment %}
-                                                                                        <span class="h5">{{ awayDict.price }}</span>
-                                                                                    </div>
-                                                                                {% endif %}
-                                                                            </div>
-                                                                            <div class="d-block d-lg-flex">
-                                                                                {% if homeDict.price > 0 %}
-                                                                                    <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                                        {% comment %}* HOME PRICE {% endcomment %}
-                                                                                        <span class="h5">{{ homeDict.price }}</span>
-                                                                                    </div>
-                                                                                {% else %}
-                                                                                    <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                                        {% comment %}* HOME PRICE {% endcomment %}
-                                                                                        <span class="h5">{{ homeDict.price }}</span>
-                                                                                    </div>
-                                                                                {% endif %}
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </div>
-                                                            {% comment %}* CUSTOM ROW END {% endcomment %}
-                                                        </a>
-                                                        {% endwith %}
+                                                                    {% comment %}* CUSTOM ROW END {% endcomment %}
+                                                                </a>
+                                                            {% endwith %}
                                                         {% endwith %}
                                                     {% endfor %}
                                                 {% endfor %}

@@ -3,6 +3,12 @@
     font-size: 8px;
 }
 
+.custom-logo{
+    width: 150px;
+    height: 150px;
+}
+
+/** Custom CSS */
 /* Base */
 body {
     line-height: 1.7;
