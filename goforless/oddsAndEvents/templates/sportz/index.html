@@ -25,7 +25,7 @@
                 <div class="site-mobile-menu-header">
                     <div class="site-mobile-menu-logo">
                         <a href="#">
-                            <img src={% static "images/OddsAndEventsLogo.svg" %} alt="Image">
+                            <img src={% static "images/OddsAndEventsLogo.svg" %} alt="Image" class="custom-logo">
                         </a>
                     </div>
                     <div class="site-mobile-menu-close mt-3">
@@ -57,7 +57,7 @@
                     <div class="container position-relative">
                         <div class="site-logo">
                             <a href=''>
-                                <img src={% static "images/OddsAndEventsLogo.png" %} alt="">
+                                <img src={% static "images/OddsAndEventsLogo.png" %} alt="" class="custom-logo">
                             </a>
                         </div>
                         <div class="d-inline-block d-md-none ml-md-0 mr-auto py-3">
@@ -86,7 +86,7 @@
                                 </li>
                             {% else %}
                                 <li>
-                                    <a href="accounts/google/login/?process=login">Log In</a>
+                                    <a href="accounts/login">Log In</a>
                                 </li>
                             {% endif %}
                         </ul>
@@ -361,7 +361,7 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-4 col-lg-2 text-center mb-4 mb-lg-0">
-                                                                            <div class="d-block d-lg-flex">
+                                                                            <div class="d-block">
                                                                                 {% if entry.scores.1.score > entry.scores.0.score %}
                                                                                 <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
                                                                                     {% comment %}* AWAY TEAM SCORE {% endcomment %}
@@ -376,7 +376,7 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-4 col-lg-2 text-center mb-4 mb-lg-0">
-                                                                            <div class="d-block d-lg-flex">
+                                                                            <div class="d-block">
                                                                                 {% if entry.scores.1.score < entry.scores.0.score %}
                                                                                 <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
                                                                                     {% comment %}* HOME TEAM SCORE {% endcomment %}
