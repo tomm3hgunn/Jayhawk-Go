@@ -408,7 +408,7 @@
                                                             </div>
                                                             <div class="col-md-4 col-lg-2 text-center mb-4 mb-lg-0">
                                                                 <div class="d-block">
-                                                                    {% if entry.scores.1.score > entry.scores.0.score %}
+                                                                    {% if entry.scores.1.score|toFloat > entry.scores.0.score|toFloat %}
                                                                         <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
                                                                             {% comment %}* AWAY TEAM SCORE {% endcomment %}
                                                                             <span class="h5">{{ entry.scores.1.score }}</span></span>
@@ -423,7 +423,7 @@
                                                             </div>
                                                             <div class="col-md-4 col-lg-2 text-center mb-4 mb-lg-0">
                                                                 <div class="d-block">
-                                                                    {% if entry.scores.1.score < entry.scores.0.score %}
+                                                                    {% if entry.scores.1.score|toFloat < entry.scores.0.score|toFloat %}
                                                                         <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
                                                                             {% comment %}* HOME TEAM SCORE {% endcomment %}
                                                                             <span class="h5">{{ entry.scores.0.score }}</span>

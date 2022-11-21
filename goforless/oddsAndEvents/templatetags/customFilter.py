@@ -46,3 +46,8 @@ def getAwayTeam(outcomeList, awayTeam):
     for outcome in outcomeList:
         if outcome["name"] == awayTeam:
             return outcome
+
+@register.filter(name="toFloat")
+def toFloat(value):
+    """Converts string to float"""
+    return float(value)
