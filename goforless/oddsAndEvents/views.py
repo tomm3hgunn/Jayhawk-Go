@@ -11,7 +11,6 @@ books = ["fanduel", "barstoolsportsbook",
 
 def index(request):
     scoresJson = scoresSearch()
-    pprint(scoresJson[5])
     variables = {"scores": scoresJson}
     return render(request, "sportz/index.html", variables)
 
