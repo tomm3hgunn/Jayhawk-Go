@@ -112,7 +112,7 @@
             <div class="site-section site-blocks-vs pt-5">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 m-auto">
                             <div class="site-block-tab">
                                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                     <li class="nav-item">
@@ -596,6 +596,134 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        {% comment %}! CHART  {% endcomment %}
+                        {% comment %} div aligned to cetner with bootstarp {% endcomment %}
+                        <div class="chart col-12">
+                            <canvas id="fanduelCanvas" height="100"></canvas>
+                            <canvas id="draftkingsCanvas" height="100"></canvas>
+                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                            <script>
+                                {% comment %} alert chartLabels {% endcomment %}
+                                var chartLabels = []
+
+                                {% for label in labels.FanDuel %}
+                                {% comment %} convert label, a datetime object, to readble date and time {% endcomment %}
+                                chartLabels.push("{{ label|date:'M d H:i' }}")
+                                {% endfor %}
+
+                                console.log(chartLabels);
+
+                                var ctx = document.getElementById('fanduelCanvas').getContext('2d');
+                                new Chart(ctx, {
+                                data: {
+                                    labels: chartLabels,
+                                    datasets: [{
+                                        type: 'line',
+                                        label: 'home point',
+                                        data: {{homePoints.FanDuel|safe}},
+                                        borderWidth: 1,
+                                        borderColor: '#930b23',
+                                    },
+                                    {
+                                        type: 'line',
+                                        label: 'away point',
+                                        data: {{awayPoints.FanDuel|safe}},
+                                        borderWidth: 1,
+                                        borderColor: '#fc525e',
+                                    },
+                                    {
+                                        type: 'line',
+                                        label: 'home price',
+                                        data: {{homePrice.FanDuel|safe}},
+                                        borderWidth: 1,
+                                        borderColor: '#4a5bff',
+                                    },
+                                    {
+                                        type: 'line',
+                                        label: 'away price',
+                                        data: {{awayPrice.FanDuel|safe}},
+                                        borderWidth: 1,
+                                        borderColor: '#150099',
+                                    },
+                                    
+
+                                ]   
+                                },
+                                options: {
+                                    scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                    },
+                                    plugins: {
+                                        title: {
+                                            display: true,
+                                            text: 'FanDuel'
+                                        }
+                                    },
+                                }
+                                });
+                                var chartLabels = []
+
+                                {% for label in labels.DraftKings %}
+                                {% comment %} convert label, a datetime object, to readble date and time {% endcomment %}
+                                chartLabels.push("{{ label|date:'M d H:i' }}")
+                                {% endfor %}
+
+                                var ctx = document.getElementById('draftkingsCanvas').getContext('2d');
+                                new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: chartLabels,
+                                    datasets: [{
+                                        type: 'line',
+                                        label: 'home point',
+                                        data: {{homePoints.DraftKings|safe}},
+                                        borderWidth: 1,
+                                        borderColor: '#930b23',
+                                    },
+                                    {
+                                        type: 'line',
+                                        label: 'away point',
+                                        data: {{awayPoints.DraftKings|safe}},
+                                        borderWidth: 1,
+                                        borderColor: '#fc525e',
+                                    },
+                                    {
+                                        type: 'line',
+                                        label: 'home price',
+                                        data: {{homePrice.DraftKings|safe}},
+                                        borderWidth: 1,
+                                        borderColor: '#4a5bff',
+                                    },
+                                    {
+                                        type: 'line',
+                                        label: 'away price',
+                                        data: {{awayPrice.DraftKings|safe}},
+                                        borderWidth: 1,
+                                        borderColor: '#150099',
+                                    },
+                                    
+
+                                ]   
+                                },
+                                options: {
+                                    scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                    },
+                                    plugins: {
+                                        title: {
+                                            display: true,
+                                            text: 'DraftKings'
+                                        }
+                                    }
+                                }
+                                });
+
+                            </script>
                         </div>
                     </div>
                 </div>
