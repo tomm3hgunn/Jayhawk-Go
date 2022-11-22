@@ -55,17 +55,17 @@ def matchup(request, homeTeam, awayTeam):
     # y axis is points or price
     # line graph
     # line for each book (5)
-    labels = {"FanDuel": [], "Barstool Sportsbook": [], "Caesers Sportsbook": [], "DraftKings": [], "BetMGM": []}
-    homePoints = {"FanDuel": [], "Barstool Sportsbook": [], "Caesers Sportsbook": [], "DraftKings": [], "BetMGM": []}
-    awayPoints = {"FanDuel": [], "Barstool Sportsbook": [], "Caesers Sportsbook": [], "DraftKings": [], "BetMGM": []}
-    homePrice = {"FanDuel": [], "Barstool Sportsbook": [], "Caesers Sportsbook": [], "DraftKings": [], "BetMGM": []}
-    awayPrice = {"FanDuel": [], "Barstool Sportsbook": [], "Caesers Sportsbook": [], "DraftKings": [], "BetMGM": []}
+    labels = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
+    homePoints = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
+    awayPoints = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
+    homePrice = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
+    awayPrice = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
 
     # query = Spreads.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam)
     # order query by sportbooks
     fanduelData = Spreads.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="FanDuel")
     barstoolData = Spreads.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="Barstool Sportsbook")
-    williamHillData = Spreads.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="Ceasears Sportsbook")
+    williamHillData = Spreads.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="Caesars Sportsbook")
     draftKingsData = Spreads.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="DraftKings")
     betMgmData = Spreads.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="BetMGM")
     for entry in fanduelData:
@@ -75,17 +75,17 @@ def matchup(request, homeTeam, awayTeam):
         homePrice["FanDuel"].append(entry.homePrice)
         awayPrice["FanDuel"].append(entry.awayPrice)
     for entry in barstoolData:
-        labels["Barstool Sportsbook"].append(entry.lastUpdated)
-        homePoints["Barstool Sportsbook"].append(entry.homePoints)
-        awayPoints["Barstool Sportsbook"].append(entry.awayPoints)
-        homePrice["Barstool Sportsbook"].append(entry.homePrice)
-        awayPrice["Barstool Sportsbook"].append(entry.awayPrice)
+        labels["BarstoolSportsbook"].append(entry.lastUpdated)
+        homePoints["BarstoolSportsbook"].append(entry.homePoints)
+        awayPoints["BarstoolSportsbook"].append(entry.awayPoints)
+        homePrice["BarstoolSportsbook"].append(entry.homePrice)
+        awayPrice["BarstoolSportsbook"].append(entry.awayPrice)
     for entry in williamHillData:
-        labels["Caesers Sportsbook"].append(entry.lastUpdated)
-        homePoints["Caesers Sportsbook"].append(entry.homePoints)
-        awayPoints["Caesers Sportsbook"].append(entry.awayPoints)
-        homePrice["Caesers Sportsbook"].append(entry.homePrice)
-        awayPrice["Caesers Sportsbook"].append(entry.awayPrice)
+        labels["CaesersSportsbook"].append(entry.lastUpdated)
+        homePoints["CaesersSportsbook"].append(entry.homePoints)
+        awayPoints["CaesersSportsbook"].append(entry.awayPoints)
+        homePrice["CaesersSportsbook"].append(entry.homePrice)
+        awayPrice["CaesersSportsbook"].append(entry.awayPrice)
     for entry in draftKingsData:
         labels["DraftKings"].append(entry.lastUpdated)
         homePoints["DraftKings"].append(entry.homePoints)

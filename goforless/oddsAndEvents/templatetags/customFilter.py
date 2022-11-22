@@ -4,6 +4,11 @@ import pytz
 
 register = template.Library()
 
+@register.filter(name="formatDateTime")
+def formatDateTime(value: datetime.datetime):
+    """value is a datetime.datetime object to convert to current date and time"""
+    return value.astimezone(pytz.timezone("US/Central")).strftime("%m/%d/%Y %I:%M %p")
+    
 
 @register.filter(name="formatDate")
 def formatDate(value):

@@ -294,6 +294,316 @@
                                                     {% endfor %}
                                                 {% endfor %}
                                             </div>
+                                            <div class="chart col-12">
+                                                <canvas id="fanduelCanvas" height="100"></canvas>
+                                                <canvas id="draftkingsCanvas" height="100"></canvas>
+                                                <canvas id="barstoolCanvas" height="100"></canvas>
+                                                <canvas id="betmgmCanvas" height="100"></canvas>
+                                                <canvas id="caesersCanvas" height="100"></canvas>
+                                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                <script>
+                                                    {% comment %}* FANDUEL {% endcomment %}
+                                                    var chartLabels = []
+                    
+                                                    {% for label in labels.FanDuel %}
+                                                    {% comment %} convert label, a datetime object, to readble date and time {% endcomment %}
+                                                    chartLabels.push("{{ label|formatDateTime }}")
+                                                    {% endfor %}
+                    
+                                                    console.log(chartLabels);
+                    
+                                                    var ctx = document.getElementById('fanduelCanvas').getContext('2d');
+                                                    new Chart(ctx, {
+                                                    data: {
+                                                        labels: chartLabels,
+                                                        datasets: [{
+                                                            type: 'line',
+                                                            label: 'home point',
+                                                            data: {{homePoints.FanDuel|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#930b23',
+                                                        },
+                                                        {
+                                                            type: 'line',
+                                                            label: 'away point',
+                                                            data: {{awayPoints.FanDuel|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#fc525e',
+                                                        },
+                                                        {
+                                                            type: 'line',
+                                                            label: 'home price',
+                                                            data: {{homePrice.FanDuel|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#4a5bff',
+                                                        },
+                                                        {
+                                                            type: 'line',
+                                                            label: 'away price',
+                                                            data: {{awayPrice.FanDuel|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#150099',
+                                                        },
+                                                        
+                    
+                                                    ]   
+                                                    },
+                                                    options: {
+                                                        scales: {
+                                                        y: {
+                                                            beginAtZero: true
+                                                        }
+                                                        },
+                                                        plugins: {
+                                                            title: {
+                                                                display: true,
+                                                                text: 'FanDuel'
+                                                            }
+                                                        },
+                                                    }
+                                                    });
+
+                                                    {% comment %}* DRAFT KINGS {% endcomment %}
+                                                    var chartLabels = []
+                    
+                                                    {% for label in labels.DraftKings %}
+                                                    {% comment %} convert label, a datetime object, to readble date and time {% endcomment %}
+                                                    chartLabels.push("{{ label|formatDateTime }}")
+                                                    {% endfor %}
+                    
+                                                    var ctx = document.getElementById('draftkingsCanvas').getContext('2d');
+                                                    new Chart(ctx, {
+                                                    type: 'line',
+                                                    data: {
+                                                        labels: chartLabels,
+                                                        datasets: [{
+                                                            type: 'line',
+                                                            label: 'home point',
+                                                            data: {{homePoints.DraftKings|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#930b23',
+                                                        },
+                                                        {
+                                                            type: 'line',
+                                                            label: 'away point',
+                                                            data: {{awayPoints.DraftKings|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#fc525e',
+                                                        },
+                                                        {
+                                                            type: 'line',
+                                                            label: 'home price',
+                                                            data: {{homePrice.DraftKings|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#4a5bff',
+                                                        },
+                                                        {
+                                                            type: 'line',
+                                                            label: 'away price',
+                                                            data: {{awayPrice.DraftKings|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#150099',
+                                                        },
+                                                        
+                    
+                                                    ]   
+                                                    },
+                                                    options: {
+                                                        scales: {
+                                                        y: {
+                                                            beginAtZero: true
+                                                        }
+                                                        },
+                                                        plugins: {
+                                                            title: {
+                                                                display: true,
+                                                                text: 'DraftKings'
+                                                            }
+                                                        }
+                                                    }
+                                                    });
+                                                    
+                                                    {% comment %}* BARSTOOL Sportsbook {% endcomment %}
+                                                    var chartLabels = []
+                    
+                                                    {% for label in labels.BarstoolSportsbook %}
+                                                    {% comment %} convert label, a datetime object, to readble date and time {% endcomment %}
+                                                    chartLabels.push("{{ label|formatDateTime }}")
+                                                    {% endfor %}
+                                                    var ctx = document.getElementById('barstoolCanvas').getContext('2d');
+                                                    new Chart(ctx, {
+                                                    type: 'line',
+                                                    data: {
+                                                        labels: chartLabels,
+                                                        datasets: [{
+                                                            type: 'line',
+                                                            label: 'home point',
+                                                            data: {{homePoints.BarstoolSportsbook|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#930b23',
+                                                        },
+                                                        {
+                                                            type: 'line',
+                                                            label: 'away point',
+                                                            data: {{awayPoints.BarstoolSportsbook|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#fc525e',
+                                                        },
+                                                        {
+                                                            type: 'line',
+                                                            label: 'home price',
+                                                            data: {{homePrice.BarstoolSportsbook|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#4a5bff',
+                                                        },
+                                                        {
+                                                            type: 'line',
+                                                            label: 'away price',
+                                                            data: {{awayPrice.BarstoolSportsbook|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#150099',
+                                                        },
+                                                        
+                    
+                                                    ]   
+                                                    },
+                                                    options: {
+                                                        scales: {
+                                                        y: {
+                                                            beginAtZero: true
+                                                        }
+                                                        },
+                                                        plugins: {
+                                                            title: {
+                                                                display: true,
+                                                                text: 'Barstool Sportsbook'
+                                                            }
+                                                        }
+                                                    }
+                                                    });
+                                                    
+                                                    {% comment %}* BET MGM {% endcomment %}
+                                                    var chartLabels = []
+                    
+                                                    {% for label in labels.BetMGM %}
+                                                    {% comment %} convert label, a datetime object, to readble date and time {% endcomment %}
+                                                    chartLabels.push("{{ label|formatDateTime }}")
+                                                    {% endfor %}
+                                                    var ctx = document.getElementById('betmgmCanvas').getContext('2d');
+                                                    new Chart(ctx, {
+                                                    type: 'line',
+                                                    data: {
+                                                        labels: chartLabels,
+                                                        datasets: [{
+                                                            type: 'line',
+                                                            label: 'home point',
+                                                            data: {{homePoints.BetMGM|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#930b23',
+                                                        },
+                                                        {
+                                                            type: 'line',
+                                                            label: 'away point',
+                                                            data: {{awayPoints.BetMGM|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#fc525e',
+                                                        },
+                                                        {
+                                                            type: 'line',
+                                                            label: 'home price',
+                                                            data: {{homePrice.BetMGM|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#4a5bff',
+                                                        },
+                                                        {
+                                                            type: 'line',
+                                                            label: 'away price',
+                                                            data: {{awayPrice.BetMGM|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#150099',
+                                                        },
+                                                        
+                    
+                                                    ]   
+                                                    },
+                                                    options: {
+                                                        scales: {
+                                                        y: {
+                                                            beginAtZero: true
+                                                        }
+                                                        },
+                                                        plugins: {
+                                                            title: {
+                                                                display: true,
+                                                                text: 'Bet MGM'
+                                                            }
+                                                        }
+                                                    }
+                                                    });
+                                                    
+                                                    {% comment %}* Caesers Sportsbook{% endcomment %}
+                                                    var chartLabels = []
+                    
+                                                    {% for label in labels.CaesersSportsbook %}
+                                                    {% comment %} convert label, a datetime object, to readble date and time {% endcomment %}
+                                                    chartLabels.push("{{ label|formatDateTime }}")
+                                                    {% endfor %}
+                                                    var ctx = document.getElementById('caesersCanvas').getContext('2d');
+                                                    new Chart(ctx, {
+                                                    type: 'line',
+                                                    data: {
+                                                        labels: chartLabels,
+                                                        datasets: [{
+                                                            type: 'line',
+                                                            label: 'home point',
+                                                            data: {{homePoints.CaesersSportsbook|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#930b23',
+                                                        },
+                                                        {
+                                                            type: 'line',
+                                                            label: 'away point',
+                                                            data: {{awayPoints.CaesersSportsbook|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#fc525e',
+                                                        },
+                                                        {
+                                                            type: 'line',
+                                                            label: 'home price',
+                                                            data: {{homePrice.CaesersSportsbook|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#4a5bff',
+                                                        },
+                                                        {
+                                                            type: 'line',
+                                                            label: 'away price',
+                                                            data: {{awayPrice.CaesersSportsbook|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#150099',
+                                                        },
+                                                        
+                    
+                                                    ]   
+                                                    },
+                                                    options: {
+                                                        scales: {
+                                                        y: {
+                                                            beginAtZero: true
+                                                        }
+                                                        },
+                                                        plugins: {
+                                                            title: {
+                                                                display: true,
+                                                                text: 'Caesers Sportsbook'
+                                                            }
+                                                        }
+                                                    }
+                                                    });
+                                                    
+                                                    
+                                                    
+                                                </script>
+                                            </div>
                                         </div>
                                     </div>
                                     {% comment %}! PANE 2 {% endcomment %}
@@ -596,134 +906,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        {% comment %}! CHART  {% endcomment %}
-                        {% comment %} div aligned to cetner with bootstarp {% endcomment %}
-                        <div class="chart col-12">
-                            <canvas id="fanduelCanvas" height="100"></canvas>
-                            <canvas id="draftkingsCanvas" height="100"></canvas>
-                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                            <script>
-                                {% comment %} alert chartLabels {% endcomment %}
-                                var chartLabels = []
-
-                                {% for label in labels.FanDuel %}
-                                {% comment %} convert label, a datetime object, to readble date and time {% endcomment %}
-                                chartLabels.push("{{ label|date:'M d H:i' }}")
-                                {% endfor %}
-
-                                console.log(chartLabels);
-
-                                var ctx = document.getElementById('fanduelCanvas').getContext('2d');
-                                new Chart(ctx, {
-                                data: {
-                                    labels: chartLabels,
-                                    datasets: [{
-                                        type: 'line',
-                                        label: 'home point',
-                                        data: {{homePoints.FanDuel|safe}},
-                                        borderWidth: 1,
-                                        borderColor: '#930b23',
-                                    },
-                                    {
-                                        type: 'line',
-                                        label: 'away point',
-                                        data: {{awayPoints.FanDuel|safe}},
-                                        borderWidth: 1,
-                                        borderColor: '#fc525e',
-                                    },
-                                    {
-                                        type: 'line',
-                                        label: 'home price',
-                                        data: {{homePrice.FanDuel|safe}},
-                                        borderWidth: 1,
-                                        borderColor: '#4a5bff',
-                                    },
-                                    {
-                                        type: 'line',
-                                        label: 'away price',
-                                        data: {{awayPrice.FanDuel|safe}},
-                                        borderWidth: 1,
-                                        borderColor: '#150099',
-                                    },
-                                    
-
-                                ]   
-                                },
-                                options: {
-                                    scales: {
-                                    y: {
-                                        beginAtZero: true
-                                    }
-                                    },
-                                    plugins: {
-                                        title: {
-                                            display: true,
-                                            text: 'FanDuel'
-                                        }
-                                    },
-                                }
-                                });
-                                var chartLabels = []
-
-                                {% for label in labels.DraftKings %}
-                                {% comment %} convert label, a datetime object, to readble date and time {% endcomment %}
-                                chartLabels.push("{{ label|date:'M d H:i' }}")
-                                {% endfor %}
-
-                                var ctx = document.getElementById('draftkingsCanvas').getContext('2d');
-                                new Chart(ctx, {
-                                type: 'line',
-                                data: {
-                                    labels: chartLabels,
-                                    datasets: [{
-                                        type: 'line',
-                                        label: 'home point',
-                                        data: {{homePoints.DraftKings|safe}},
-                                        borderWidth: 1,
-                                        borderColor: '#930b23',
-                                    },
-                                    {
-                                        type: 'line',
-                                        label: 'away point',
-                                        data: {{awayPoints.DraftKings|safe}},
-                                        borderWidth: 1,
-                                        borderColor: '#fc525e',
-                                    },
-                                    {
-                                        type: 'line',
-                                        label: 'home price',
-                                        data: {{homePrice.DraftKings|safe}},
-                                        borderWidth: 1,
-                                        borderColor: '#4a5bff',
-                                    },
-                                    {
-                                        type: 'line',
-                                        label: 'away price',
-                                        data: {{awayPrice.DraftKings|safe}},
-                                        borderWidth: 1,
-                                        borderColor: '#150099',
-                                    },
-                                    
-
-                                ]   
-                                },
-                                options: {
-                                    scales: {
-                                    y: {
-                                        beginAtZero: true
-                                    }
-                                    },
-                                    plugins: {
-                                        title: {
-                                            display: true,
-                                            text: 'DraftKings'
-                                        }
-                                    }
-                                }
-                                });
-
-                            </script>
                         </div>
                     </div>
                 </div>
