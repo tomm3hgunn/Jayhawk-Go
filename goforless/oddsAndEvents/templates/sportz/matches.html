@@ -464,16 +464,13 @@
                                                         <h3 class="h5 mb-0 text-white">Sportsbook</h3>
                                                     </div>
                                                     <div class="col-md-1 col-lg-1 mb-4 mb-lg-0 ml-auto">
-                                                        <h3 class="h5 mb-0 text-white">Away Price</h3>
-                                                    </div>
-                                                    <div class="col-md-1 col-lg-1 mb-4 mb-lg-0 mr-2">
-                                                        <h3 class="h5 mb-0 text-white">Home Price</h3>
+                                                        <h3 class="h5 mb-0 text-white">Prices</h3>
                                                     </div>
                                                 </div>
                                                 {% comment %}* API DISPLAY FOR MONEYLINE {% endcomment %}
                                                 {% for entry in moneyline %}
                                                     {% for bookmaker in entry.bookmakers %}
-                                                        {% comment %} url goes to dynamic page with home and away team {% endcomment %}
+                                                        {% comment %} url goes to dynamic page with home/away team {% endcomment %}
                                                         <a href="{% url 'matchup' entry.home_team entry.away_team %}">
                                                             <div class="row bg-white align-items-center ml-0 mr-0 py-2 match-entry">
                                                                 <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
@@ -548,19 +545,17 @@
                                                                                     </div>
                                                                                 {% endif %}
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="">
-                                                                            <div class="d-block d-lg-flex py-2">
+                                                                            <div class="d-block d-lg-flex">
                                                                                 {% if homeDict.price > 0 %}
-                                                                                    <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                                        {% comment %}* HOME PRICE {% endcomment %}
-                                                                                        <span class="h5">{{ homeDict.price }}</span>
-                                                                                    </div>
-                                                                                {% else %}
-                                                                                    <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
-                                                                                        {% comment %}* HOME PRICE {% endcomment %}
-                                                                                        <span class="h5">{{ homeDict.price }}</span>
-                                                                                    </div>
+                                                                                <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                    {% comment %}* HOME PRICE {% endcomment %}
+                                                                                    <span class="h5">{{ homeDict.price }}</span>
+                                                                                </div>
+                                                                                 {% else %}
+                                                                                <div class="bg-danger py-2 px-4 mb-2 text-white d-inline-block rounded">
+                                                                                    {% comment %}* HOME PRICE {% endcomment %}
+                                                                                    <span class="h5">{{ homeDict.price }}</span>
+                                                                                </div>
                                                                                 {% endif %}
                                                                             </div>
                                                                         </div>
