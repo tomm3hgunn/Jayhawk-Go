@@ -600,68 +600,129 @@
                         {% comment %}! CHART  {% endcomment %}
                         {% comment %} div aligned to cetner with bootstarp {% endcomment %}
                         <div class="chart col-12">
-                            <canvas id="canvas" height="100"></canvas>
+                            <canvas id="fanduelCanvas" height="100"></canvas>
+                            <canvas id="draftkingsCanvas" height="100"></canvas>
                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                             <script>
                                 {% comment %} alert chartLabels {% endcomment %}
                                 var chartLabels = []
 
-                                {% for label in chartLabels %}
+                                {% for label in labels.FanDuel %}
                                 {% comment %} convert label, a datetime object, to readble date and time {% endcomment %}
-                                chartLabels.push("{{ label|date:'D, d M Y H:i' }}")
+                                chartLabels.push("{{ label|date:'M d H:i' }}")
                                 {% endfor %}
 
                                 console.log(chartLabels);
-                                {% comment %} var myChart = new Chart( "chart", {
-                                    type:"line",
-                                    data:{
-                                        labels: {{chartLabels|safe}},
-                                        datasets: [
-                                            {
-                                                label: "My First Dataset",
-                                                data: {{chartData|safe}},
-                                                fill: false,
-                                                borderColor: "rgb(75, 192, 192)",
-                                                tension: 0.1
-                                            }
-                                        ]
+
+                                var ctx = document.getElementById('fanduelCanvas').getContext('2d');
+                                new Chart(ctx, {
+                                data: {
+                                    labels: chartLabels,
+                                    datasets: [{
+                                        type: 'line',
+                                        label: 'home point',
+                                        data: {{homePoints.FanDuel|safe}},
+                                        borderWidth: 1,
+                                        borderColor: '#930b23',
                                     },
-                                    options: {
-                                        scales: {
-                                            yAxes: [{
-                                                ticks: {
-                                                beginAtZero: true,
-                                                }
-                                            }],
+                                    {
+                                        type: 'line',
+                                        label: 'away point',
+                                        data: {{awayPoints.FanDuel|safe}},
+                                        borderWidth: 1,
+                                        borderColor: '#fc525e',
+                                    },
+                                    {
+                                        type: 'line',
+                                        label: 'home price',
+                                        data: {{homePrice.FanDuel|safe}},
+                                        borderWidth: 1,
+                                        borderColor: '#4a5bff',
+                                    },
+                                    {
+                                        type: 'line',
+                                        label: 'away price',
+                                        data: {{awayPrice.FanDuel|safe}},
+                                        borderWidth: 1,
+                                        borderColor: '#150099',
+                                    },
+                                    
+
+                                ]   
+                                },
+                                options: {
+                                    scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                    },
+                                    plugins: {
+                                        title: {
+                                            display: true,
+                                            text: 'FanDuel'
+                                        }
+                                    },
+                                }
+                                });
+                                var chartLabels = []
+
+                                {% for label in labels.DraftKings %}
+                                {% comment %} convert label, a datetime object, to readble date and time {% endcomment %}
+                                chartLabels.push("{{ label|date:'M d H:i' }}")
+                                {% endfor %}
+
+                                var ctx = document.getElementById('draftkingsCanvas').getContext('2d');
+                                new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: chartLabels,
+                                    datasets: [{
+                                        type: 'line',
+                                        label: 'home point',
+                                        data: {{homePoints.DraftKings|safe}},
+                                        borderWidth: 1,
+                                        borderColor: '#930b23',
+                                    },
+                                    {
+                                        type: 'line',
+                                        label: 'away point',
+                                        data: {{awayPoints.DraftKings|safe}},
+                                        borderWidth: 1,
+                                        borderColor: '#fc525e',
+                                    },
+                                    {
+                                        type: 'line',
+                                        label: 'home price',
+                                        data: {{homePrice.DraftKings|safe}},
+                                        borderWidth: 1,
+                                        borderColor: '#4a5bff',
+                                    },
+                                    {
+                                        type: 'line',
+                                        label: 'away price',
+                                        data: {{awayPrice.DraftKings|safe}},
+                                        borderWidth: 1,
+                                        borderColor: '#150099',
+                                    },
+                                    
+
+                                ]   
+                                },
+                                options: {
+                                    scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                    },
+                                    plugins: {
+                                        title: {
+                                            display: true,
+                                            text: 'DraftKings'
                                         }
                                     }
-                                 }
-                                 ) {% endcomment %}
-                                 const ctx = document.getElementById('canvas').getContext('2d');
-                                 new Chart(ctx, {
-                                    type: 'line',
-                                    data: {
-                                        labels: chartLabels,
-                                        datasets: [{
-                                            label: 'home point',
-                                            data: {{homePoints|safe}},
-                                            borderWidth: 1
-                                        },
-                                        {
-                                            label: 'away point',
-                                            data: {{awayPoints|safe}},
-                                            borderWidth: 1
-                                        }
-                                    ]   
-                                    },
-                                    options: {
-                                      scales: {
-                                        y: {
-                                          beginAtZero: true
-                                        }
-                                      }
-                                    }
-                                  });
+                                }
+                                });
+
                             </script>
                         </div>
                     </div>
