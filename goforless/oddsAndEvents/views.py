@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import *
 from .services import *
-
+from oddsAndEvents.models import *
 # Create your views here.
 
 books = ["fanduel", "barstoolsportsbook",
@@ -50,6 +50,22 @@ def matchup(request, homeTeam, awayTeam):
     spreadsJson = oddSpreads()
     totalsJson = oddTotals()
     moneylineJson = oddMoneyline()
+
+    # Get data from table
+    # x axis is time last updated
+    # y axis is points or price
+    # line graph
+    # line for each book (5)
+    labels = []
+    homePoints = []
+    awayPoints = []
+    # query = Spreads.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam)
+    # order query by sportbooks
+    query = Spreads.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam).order_by('bookmaker')
+    for entry in query:
+        labels.append (entry.lastUpdated)
+        homePoints.append (entry.homePoints)
+        awayPoints.append (entry.awayPoints)
     variables = {"spreads": spreadsJson, "totals": totalsJson, "moneyline": moneylineJson,
-                 "books": books, "homeTeam": homeTeam, "awayTeam": awayTeam}
+                 "books": books, "homeTeam": homeTeam, "awayTeam": awayTeam, "chartLabels": labels, "homePoints": homePoints, "awayPoints": awayPoints}
     return render(request, "sportz/matchup.html", variables)
