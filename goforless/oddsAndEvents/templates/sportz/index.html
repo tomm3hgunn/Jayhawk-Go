@@ -25,7 +25,7 @@
                 <div class="site-mobile-menu-header">
                     <div class="site-mobile-menu-logo">
                         <a href="#">
-                            <img src
+                            <img src=
                                  {% static "images/OddsAndEventsLogo.svg" %}
                                  alt="Image"
                                  class="custom-logo">
@@ -58,7 +58,7 @@
                     <div class="container position-relative">
                         <div class="site-logo">
                             <a href=''>
-                                <img src
+                                <img src=
                                      {% static "images/OddsAndEventsLogo.png" %}
                                      alt=""
                                      class="custom-logo">
@@ -88,13 +88,16 @@
                                             <a href="#">Preferences</a>
                                         </li>
                                         <li>
-                                            <a href="accounts/logout">Log Out</a>
+                                            <a href="{% url 'account_logout' %}">Log Out</a>
                                         </li>
                                     </ul>
                                 </li>
                             {% else %}
                                 <li>
-                                    <a href="accounts/login">Log In</a>
+                                    <a href="{% url 'account_login' %}">Log In</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'account_signup' %}">Sign Up</a>
                                 </li>
                             {% endif %}
                         </ul>
@@ -138,6 +141,54 @@
                      style="background-image: url(/static/images/passing.jpeg);"
                      data-aos="fade"
                      data-stellar-background-ratio="0.5">
+                    <div class="container">
+                        <div class="row align-items-center justify-content-start">
+                            <div class="col-md-6 text-center" data-aos="fade-up" data-aos-delay="400">
+                                <h1 class="bg-text-line">
+                                    Welcome to
+                                    <br>
+                                    Odds and Events!
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="site-blocks-cover overlay"
+                    style="background-image: url(/static/images/pickensCatch.jpg);"
+                    data-aos="fade"
+                    data-stellar-background-ratio="0.5">
+                    <div class="container">
+                        <div class="row align-items-center justify-content-start">
+                            <div class="col-md-6 text-center" data-aos="fade-up" data-aos-delay="400">
+                                <h1 class="bg-text-line">
+                                    Welcome to
+                                    <br>
+                                    Odds and Events!
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="site-blocks-cover overlay"
+                    style="background-image: url(/static/images/allenJump.jpg);"
+                    data-aos="fade"
+                    data-stellar-background-ratio="0.5">
+                    <div class="container">
+                        <div class="row align-items-center justify-content-start">
+                            <div class="col-md-6 text-center" data-aos="fade-up" data-aos-delay="400">
+                                <h1 class="bg-text-line">
+                                    Welcome to
+                                    <br>
+                                    Odds and Events!
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="site-blocks-cover overlay"
+                    style="background-image: url(/static/images/lionsRun.jpg);"
+                    data-aos="fade"
+                    data-stellar-background-ratio="0.5">
                     <div class="container">
                         <div class="row align-items-center justify-content-start">
                             <div class="col-md-6 text-center" data-aos="fade-up" data-aos-delay="400">
@@ -357,7 +408,7 @@
                                                             </div>
                                                             <div class="col-md-4 col-lg-2 text-center mb-4 mb-lg-0">
                                                                 <div class="d-block">
-                                                                    {% if entry.scores.1.score > entry.scores.0.score %}
+                                                                    {% if entry.scores.1.score|toFloat > entry.scores.0.score|toFloat %}
                                                                         <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
                                                                             {% comment %}* AWAY TEAM SCORE {% endcomment %}
                                                                             <span class="h5">{{ entry.scores.1.score }}</span></span>
@@ -372,7 +423,7 @@
                                                             </div>
                                                             <div class="col-md-4 col-lg-2 text-center mb-4 mb-lg-0">
                                                                 <div class="d-block">
-                                                                    {% if entry.scores.1.score < entry.scores.0.score %}
+                                                                    {% if entry.scores.1.score|toFloat < entry.scores.0.score|toFloat %}
                                                                         <div class="bg-success py-2 px-4 mb-2 text-white d-inline-block rounded">
                                                                             {% comment %}* HOME TEAM SCORE {% endcomment %}
                                                                             <span class="h5">{{ entry.scores.0.score }}</span>
@@ -429,9 +480,7 @@
                 </div>
             </div>
         </div>
-        <div class="site-section pt-0 feature-blocks-1 no-margin-top"
-             data-aos="fade"
-             data-aos-delay="100">
+        <div class="site-section pt-0 feature-blocks-1 no-margin-top">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-lg-4">
@@ -442,51 +491,51 @@
                                     Bet MGM
                                 </h2>
                                 <p>
-                                    Info about sportsbook and referral link goes here
+                                    Info about Bet MGM Sportsbook and link goes here
                                 </p>
                                 <p class="mb-0">
                                     <a target="_blank"
                                        rel="noopener noreferrer"
                                        href="https://sports.betmgm.com/en/sports/football-11/betting/usa-9/nfl-35"
-                                       class="btn btn-primary btn-sm px-4 py-2 rounded-0">Referral Link</a>
+                                       class="btn btn-primary btn-sm px-4 py-2 rounded-0">Go To Bet MGM</a>
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4">
                         <div class="p-3 p-md-5 feature-block-1 mb-5 mb-lg-0 bg"
-                             style="background-image: url('/static/images/DraftKings3.png');">
+                             style="background-image: url('/static/images/DraftKings4.png');">
                             <div class="text">
                                 <h2 class="h5 text-white">
                                     Draft Kings
                                 </h2>
                                 <p>
-                                    Info about sportsbook and referral link goes here
+                                    Info about Draft Kings Sportsbook and link goes here
                                 </p>
                                 <p class="mb-0">
                                     <a target="_blank"
                                        rel="noopener noreferrer"
                                        href="https://sportsbook.draftkings.com/leagues/football/nfl"
-                                       class="btn btn-primary btn-sm px-4 py-2 rounded-0">Referral Link</a>
+                                       class="btn btn-primary btn-sm px-4 py-2 rounded-0">Go To Draft Kings</a>
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4">
                         <div class="p-3 p-md-5 feature-block-1 mb-5 mb-lg-0 bg"
-                             style="background-image: url('/static/images/fanduel.png');">
+                             style="background-image: url('/static/images/fanduel3.png');">
                             <div class="text">
                                 <h2 class="h5 text-white">
                                     Fan Duel
                                 </h2>
                                 <p>
-                                    Info about sportsbook and referral link goes here
+                                    Info about Fan Duel Sportsbook and link goes here
                                 </p>
                                 <p class="mb-0">
                                     <a target="_blank"
                                        rel="noopener noreferrer"
                                        href="https://sportsbook.fanduel.com/navigation/nfl"
-                                       class="btn btn-primary btn-sm px-4 py-2 rounded-0">Referral Link</a>
+                                       class="btn btn-primary btn-sm px-4 py-2 rounded-0">Go To Fan Duel</a>
                                 </p>
                             </div>
                         </div>
@@ -495,38 +544,38 @@
                 <div class="row justify-content-center">
                     <div class="col-md-6 col-lg-4">
                         <div class="p-3 p-md-5 feature-block-1 mb-5 mb-lg-0 bg"
-                             style="background-image: url('/static/images/WilliamHill(us).png');">
+                             style="background-image: url('/static/images/BarstoolSports3.png');">
                             <div class="text">
                                 <h2 class="h5 text-white">
-                                    Caesars Sportsbook
+                                    Barstool Sportsbook
                                 </h2>
                                 <p>
-                                    Info about sportsbook and referral link goes here
+                                    Info about Barstool Sportsbook and link goes here
                                 </p>
                                 <p class="mb-0">
                                     <a target="_blank"
                                        rel="noopener noreferrer"
-                                       href="https://caesars.com/sportsbook-and-casino"
-                                       class="btn btn-primary btn-sm px-4 py-2 rounded-0">Referral Link</a>
+                                       href="https://www.barstoolsportsbook.com/sports/american_football/nfl"
+                                       class="btn btn-primary btn-sm px-4 py-2 rounded-0">Go To Barstool</a>
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4">
                         <div class="p-3 p-md-5 feature-block-1 mb-5 mb-lg-0 bg"
-                             style="background-image: url('/static/images/BarstoolSportsbook.png');">
+                             style="background-image: url('/static/images/Caesars3.png');">
                             <div class="text">
                                 <h2 class="h5 text-white">
-                                    Barstool Sportsbook
+                                    Caesars Sportsbook
                                 </h2>
                                 <p>
-                                    Info about sportsbook and referral link goes here
+                                    Info about Caesars Sportsbook and link goes here
                                 </p>
                                 <p class="mb-0">
                                     <a target="_blank"
                                        rel="noopener noreferrer"
-                                       href="https://www.barstoolsportsbook.com/sports/american_football/nfl"
-                                       class="btn btn-primary btn-sm px-4 py-2 rounded-0">Referral Link</a>
+                                       href="https://caesars.com/sportsbook-and-casino"
+                                       class="btn btn-primary btn-sm px-4 py-2 rounded-0">Go To Caesars</a>
                                 </p>
                             </div>
                         </div>
@@ -583,7 +632,7 @@
                         <p>
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             Copyright &copy;<script data-cfasync="false"
-        src
+        src=
         {%static "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" %}></script><script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </p>

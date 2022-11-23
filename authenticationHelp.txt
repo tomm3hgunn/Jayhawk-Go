@@ -1,0 +1,17 @@
+How to add the google login authentication to the database:
+
+https://console.cloud.google.com/apis/credentials?project=django-oauth-oae
+
+under heading OAuth 2.0 Client IDs -> click on Jayhawk GO
+
+Client ID and Client Secret Key are on right hand side
+
+Go to http://127.0.0.1:8000/admin/
+
+Add a Social application
+
+Provider: Google
+Name: django-oauth-OAE (or whatever name)
+
+Then copy over the Client ID & Client secret into Client ID & Secret key respectively
+Save and you're done
