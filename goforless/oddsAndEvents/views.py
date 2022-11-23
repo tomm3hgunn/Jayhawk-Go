@@ -57,6 +57,7 @@ def matchup(request, homeTeam, awayTeam):
     # line for each book (5)
     labelsSpread = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
     labelsTotal = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
+    labelsMoneyline = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
     homePoints = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
     awayPoints = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
     homePrice = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
@@ -65,6 +66,8 @@ def matchup(request, homeTeam, awayTeam):
     underPoints = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
     overPrice = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
     underPrice = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
+    homePriceMoneyline = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
+    awayPriceMoneyline = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
 
     #* Spreads
     fanduelData = Spreads.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="FanDuel")
@@ -103,7 +106,7 @@ def matchup(request, homeTeam, awayTeam):
         homePrice["BetMGM"].append(entry.homePrice)
         awayPrice["BetMGM"].append(entry.awayPrice)
 
-    # Totals
+    #* Totals
     fanduelData = Totals.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="FanDuel")
     barstoolData = Totals.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="Barstool Sportsbook")
     williamHillData = Totals.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="Caesars Sportsbook")
@@ -140,6 +143,32 @@ def matchup(request, homeTeam, awayTeam):
         overPrice["BetMGM"].append(entry.overPrice)
         underPrice["BetMGM"].append(entry.underPrice)
 
+    #* Moneyline
+    fanduelData = Moneyline.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="FanDuel")
+    barstoolData = Moneyline.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="Barstool Sportsbook")
+    williamHillData = Moneyline.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="Caesars Sportsbook")
+    draftKingsData = Moneyline.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="DraftKings")
+    betMgmData = Moneyline.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="BetMGM")
+    for entry in fanduelData:
+        labelsMoneyline["FanDuel"].append(entry.lastUpdated)
+        homePriceMoneyline["FanDuel"].append(entry.homePrice)
+        awayPriceMoneyline["FanDuel"].append(entry.awayPrice)
+    for entry in barstoolData:
+        labelsMoneyline["BarstoolSportsbook"].append(entry.lastUpdated)
+        homePriceMoneyline["BarstoolSportsbook"].append(entry.homePrice)
+        awayPriceMoneyline["BarstoolSportsbook"].append(entry.awayPrice)
+    for entry in williamHillData:
+        labelsMoneyline["CaesersSportsbook"].append(entry.lastUpdated)
+        homePriceMoneyline["CaesersSportsbook"].append(entry.homePrice)
+        awayPriceMoneyline["CaesersSportsbook"].append(entry.awayPrice)
+    for entry in draftKingsData:
+        labelsMoneyline["DraftKings"].append(entry.lastUpdated)
+        homePriceMoneyline["DraftKings"].append(entry.homePrice)
+        awayPriceMoneyline["DraftKings"].append(entry.awayPrice)
+    for entry in betMgmData:
+        labelsMoneyline["BetMGM"].append(entry.lastUpdated)
+        homePriceMoneyline["BetMGM"].append(entry.homePrice)
+        awayPriceMoneyline["BetMGM"].append(entry.awayPrice)
 
     variables = {
         "spreads": spreadsJson,
@@ -158,5 +187,8 @@ def matchup(request, homeTeam, awayTeam):
         "underPoints": underPoints,
         "overPrice": overPrice,
         "underPrice": underPrice,
+        "homePriceMoneyline": homePriceMoneyline,
+        "awayPriceMoneyline": awayPriceMoneyline,
+        "labelsMoneyline": labelsMoneyline,
     }
     return render(request, "sportz/matchup.html", variables)

@@ -1199,6 +1199,231 @@
                                                     {% endfor %}
                                                 {% endfor %}
                                             </div>
+                                            <div class="chart col-12">
+                                                <canvas id="barstoolMoneylineCanvas" height="100"></canvas>
+                                                <canvas id="fanduelMoneylineCanvas" height="100"></canvas>
+                                                <canvas id="draftkingsMoneylineCanvas" height="100"></canvas>
+                                                <canvas id="caesersMoneylineCanvas" height="100"></canvas>
+                                                <canvas id="betmgmMoneylineCanvas" height="100"></canvas>
+                                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                <script>
+                                                    {% comment %}* FANDUEL {% endcomment %}
+                                                    var chartLabels = []
+                    
+                                                    {% for label in labelsMoneyline.FanDuel %}
+                                                    {% comment %} convert label, a datetime object, to readble date and time {% endcomment %}
+                                                    chartLabels.push("{{ label|formatDateTime }}")
+                                                    {% endfor %}
+                                        
+                                                    var ctx = document.getElementById('fanduelMoneylineCanvas').getContext('2d');
+                                                    new Chart(ctx, {
+                                                    data: {
+                                                        labels: chartLabels,
+                                                        datasets: [{
+                                                            type: 'line',
+                                                            label: 'home price',
+                                                            data: {{homePriceMoneyline.FanDuel|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#930b23',
+                                                        },
+                                                        {
+                                                            type: 'line',
+                                                            label: 'away price',
+                                                            data: {{awayPriceMoneyline.FanDuel|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#fc525e',
+                                                        },
+                                                    ]   
+                                                    },
+                                                    options: {
+                                                        scales: {
+                                                        y: {
+                                                            beginAtZero: true
+                                                        }
+                                                        },
+                                                        plugins: {
+                                                            title: {
+                                                                display: true,
+                                                                text: 'FanDuel'
+                                                            }
+                                                        },
+                                                    }
+                                                    });
+
+                                                    {% comment %}* DRAFT KINGS {% endcomment %}
+                                                    var chartLabels = []
+                    
+                                                    {% for label in labelsMoneyline.DraftKings %}
+                                                    {% comment %} convert label, a datetime object, to readble date and time {% endcomment %}
+                                                    chartLabels.push("{{ label|formatDateTime }}")
+                                                    {% endfor %}
+                    
+                                                    var ctx = document.getElementById('draftkingsMoneylineCanvas').getContext('2d');
+                                                    new Chart(ctx, {
+                                                    type: 'line',
+                                                    data: {
+                                                        labels: chartLabels,
+                                                        datasets: [{
+                                                            type: 'line',
+                                                            label: 'home price',
+                                                            data: {{homePriceMoneyline.DraftKings|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#930b23',
+                                                        },
+                                                        {
+                                                            type: 'line',
+                                                            label: 'away price',
+                                                            data: {{awayPriceMoneyline.DraftKings|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#fc525e',
+                                                        },
+                                                    ]   
+                                                    },
+                                                    options: {
+                                                        scales: {
+                                                        y: {
+                                                            beginAtZero: true
+                                                        }
+                                                        },
+                                                        plugins: {
+                                                            title: {
+                                                                display: true,
+                                                                text: 'DraftKings'
+                                                            }
+                                                        }
+                                                    }
+                                                    });
+                                                    
+                                                    {% comment %}* BARSTOOL Sportsbook {% endcomment %}
+                                                    var chartLabels = []
+                    
+                                                    {% for label in labelsMoneyline.BarstoolSportsbook %}
+                                                    {% comment %} convert label, a datetime object, to readble date and time {% endcomment %}
+                                                    chartLabels.push("{{ label|formatDateTime }}")
+                                                    {% endfor %}
+                                                    var ctx = document.getElementById('barstoolMoneylineCanvas').getContext('2d');
+                                                    new Chart(ctx, {
+                                                    type: 'line',
+                                                    data: {
+                                                        labels: chartLabels,
+                                                        datasets: [{
+                                                            type: 'line',
+                                                            label: 'home price',
+                                                            data: {{homePriceMoneyline.BarstoolSportsbook|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#930b23',
+                                                        },
+                                                        {
+                                                            type: 'line',
+                                                            label: 'away price',
+                                                            data: {{awayPriceMoneyline.BarstoolSportsbook|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#fc525e',
+                                                        },
+                                                    ]   
+                                                    },
+                                                    options: {
+                                                        scales: {
+                                                        y: {
+                                                            beginAtZero: true
+                                                        }
+                                                        },
+                                                        plugins: {
+                                                            title: {
+                                                                display: true,
+                                                                text: 'Barstool Sportsbook'
+                                                            }
+                                                        }
+                                                    }
+                                                    });
+                                                    
+                                                    {% comment %}* BET MGM {% endcomment %}
+                                                    var chartLabels = []
+                    
+                                                    {% for label in labelsMoneyline.BetMGM %}
+                                                    {% comment %} convert label, a datetime object, to readble date and time {% endcomment %}
+                                                    chartLabels.push("{{ label|formatDateTime }}")
+                                                    {% endfor %}
+                                                    var ctx = document.getElementById('betmgmMoneylineCanvas').getContext('2d');
+                                                    new Chart(ctx, {
+                                                    type: 'line',
+                                                    data: {
+                                                        labels: chartLabels,
+                                                        datasets: [{
+                                                            type: 'line',
+                                                            label: 'home price',
+                                                            data: {{homePriceMoneyline.BetMGM|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#930b23',
+                                                        },
+                                                        {
+                                                            type: 'line',
+                                                            label: 'away price',
+                                                            data: {{awayPriceMoneyline.BetMGM|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#fc525e',
+                                                        },
+                                                    ]   
+                                                    },
+                                                    options: {
+                                                        scales: {
+                                                        y: {
+                                                            beginAtZero: true
+                                                        }
+                                                        },
+                                                        plugins: {
+                                                            title: {
+                                                                display: true,
+                                                                text: 'Bet MGM'
+                                                            }
+                                                        }
+                                                    }
+                                                    });
+                                                    
+                                                    {% comment %}* Caesers Sportsbook{% endcomment %}
+                                                    var chartLabels = []
+                    
+                                                    {% for label in labelsMoneyline.CaesersSportsbook %}
+                                                    {% comment %} convert label, a datetime object, to readble date and time {% endcomment %}
+                                                    chartLabels.push("{{ label|formatDateTime }}")
+                                                    {% endfor %}
+                                                    var ctx = document.getElementById('caesersMoneylineCanvas').getContext('2d');
+                                                    new Chart(ctx, {
+                                                    type: 'line',
+                                                    data: {
+                                                        labels: chartLabels,
+                                                        datasets: [{
+                                                            type: 'line',
+                                                            label: 'home price',
+                                                            data: {{homePriceMoneyline.CaesersSportsbook|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#930b23',
+                                                        },
+                                                        {
+                                                            type: 'line',
+                                                            label: 'away price',
+                                                            data: {{awayPriceMoneyline.CaesersSportsbook|safe}},
+                                                            borderWidth: 1,
+                                                            borderColor: '#fc525e',
+                                                        },
+                                                    ]   
+                                                    },
+                                                    options: {
+                                                        scales: {
+                                                        y: {
+                                                            beginAtZero: true
+                                                        }
+                                                        },
+                                                        plugins: {
+                                                            title: {
+                                                                display: true,
+                                                                text: 'Caesers Sportsbook'
+                                                            }
+                                                        }
+                                                    }
+                                                    });
+                                                </script>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
