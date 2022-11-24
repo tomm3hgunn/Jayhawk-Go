@@ -98,80 +98,98 @@
                     </div>
                 </div>
             </div>
+            
             <div class="site-section bg-light" data-aos="fade-up">
                 <div class="container">
                     <div class="row align-items-first justify-content-center">
-                        <div class="col-md-7">
+                        <div class="col-md-12">
                             <form action="#" method="post" class="bg-white">
                                 <div class="p-3 p-lg-5 border">
-                                    <div class="dropdown">
-                                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Favorite Team
-                                        <span class="caret"></span></button>
-                                        <ul class="dropdown-menu">
-                                            <li class="dropdown-header">AFC East</li>
-                                            <li>Buffalo Bills</li>
-                                            <li>Miami Dolphins</li>
-                                            <li>New England Patriots</li>
-                                            <li>New York Jets</li>                                            
-                                            <li class="divider"></li>
-                                            <li class="dropdown-header">AFC North</li>
-                                            <li>Baltimore Ravens</li>
-                                            <li>Cincinnati Bengals</li>
-                                            <li>Cleveland Browns</li>
-                                            <li>Pittsburgh Steelers</li>
-                                            <li class="divider"></li>
-                                            <li class="dropdown-header">AFC South</li>
-                                            <li>Houston Texans</li>
-                                            <li>Indianapolis Colts</li>
-                                            <li>Jacksonville Jaguars</li>
-                                            <li>Tennessee Titans</li>
-                                            <li class="divider"></li>
-                                            <li class="dropdown-header">AFC West</li>
-                                            <li>Denver Broncos</li>
-                                            <li>Kansas City Chiefs</li>
-                                            <li>Las Vegas Raiders</li>
-                                            <li>Los Angeles Chargers</li>
-                                            <li class="divider"></li>
-                                            <li class="dropdown-header">NFC East</li>
-                                            <li>Dallas Cowboys</li>
-                                            <li>New York Giants</li>
-                                            <li>Philadelphia Eagles</li>
-                                            <li>Washington Commanders</li>                                            
-                                            <li class="divider"></li>
-                                            <li class="dropdown-header">NFC North</li>
-                                            <li>Chicago Bears</li>
-                                            <li>Detroit Lions</li>
-                                            <li>Green Bay Packers</li>
-                                            <li>Minnesota Vikings</li>
-                                            <li class="divider"></li>
-                                            <li class="dropdown-header">NFC South</li>
-                                            <li>Atlanta Falcons</li>
-                                            <li>Carolina Panthers</li>
-                                            <li>New Orleans Saints</li>
-                                            <li>Tampa Bay Buccaneers</li>
-                                            <li class="divider"></li>
-                                            <li class="dropdown-header">NFC West</li>
-                                            <li>Arizona Cardinals</li>
-                                            <li>Los Angeles Rams</li>
-                                            <li>San Francisco 49ers</li>
-                                            <li>Seattle Seahawks</li>
-                                        </ul>
-                                      </div>
+                                    <h2>Favorite Team</h2>
                                     <div class="form-group row">
-                                        <div class="col-md-12">
-                                            <label for="c_subject" class="text-black">
-                                                Preference Number 2
-                                            </label>
-                                            <input type="text" class="form-control" id="c_subject" name="c_subject">
-                                        </div>
+                                    <div class="col-md-3">
+                                        <li class="dropdown-header">AFC East</li>
+                                        <input type="radio" id="Bills" name="fav_team" value="Bills">
+                                        <label for="Bills">Buffalo Bills</label><br>
+                                        <input type="radio" id="Dolphins" name="fav_team" value="Dolphins">
+                                        <label for="Dolphins">Miami Dolphins</label><br>
+                                        <input type="radio" id="Patriots" name="fav_team" value="Patriots">
+                                        <label for="Patriots">New England Patriots</label><br>
+                                        <input type="radio" id="Jets" name="fav_team" value="Jets">
+                                        <label for="Jets">New York Jets</label><br>
+                                        <li class="dropdown-header">AFC North</li>
+                                        <input type="radio" id="Ravens" name="fav_team" value="Ravens">
+                                        <label for="Ravens">Baltimore Ravens</label><br>
+                                        <input type="radio" id="Bengals" name="fav_team" value="Bengals">
+                                        <label for="Bengals">Cincinnati Bengals</label><br>
+                                        <input type="radio" id="Browns" name="fav_team" value="Browns">
+                                        <label for="Browns">Cleveland Browns</label><br>
+                                        <input type="radio" id="Steelers" name="fav_team" value="Steelers">
+                                        <label for="Steelers">Pittsburgh Steelers</label><br>
                                     </div>
-
-
-
-
-                                      
-                                    <div class="form-group row">
-                                        <div class="col-lg-12">
+                                    <div class="col-md-3">
+                                        <li class="dropdown-header">AFC South</li>
+                                        <input type="radio" id="Texans" name="fav_team" value="Texans">
+                                        <label for="Texans">Houston Texans</label><br>
+                                        <input type="radio" id="Colts" name="fav_team" value="Colts">
+                                        <label for="Colts">Indianapolis Colts</label><br>
+                                        <input type="radio" id="Jaguars" name="fav_team" value="Jaguars">
+                                        <label for="Jaguars">Jacksonville Jaguars</label><br>
+                                        <input type="radio" id="Titans" name="fav_team" value="Titans">
+                                        <label for="Titans">Tennessee Titans</label><br>
+                                        <li class="dropdown-header">AFC West</li>
+                                        <input type="radio" id="Broncos" name="fav_team" value="Broncos">
+                                        <label for="Broncos">Denver Broncos</label><br>
+                                        <input type="radio" id="Chiefs" name="fav_team" value="Chiefs">
+                                        <label for="Chiefs">Kansas City Chiefs</label><br>
+                                        <input type="radio" id="Raiders" name="fav_team" value="Raiders">
+                                        <label for="Raiders">Las Vegas Raiders</label><br>
+                                        <input type="radio" id="Chargers" name="fav_team" value="Chargers">
+                                        <label for="Chargers">Los Angeles Chargers</label><br>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <li class="dropdown-header">NFC East</li>
+                                        <input type="radio" id="Cowboys" name="fav_team" value="Cowboys">
+                                        <label for="Cowboys">Dallas Cowboys</label><br>
+                                        <input type="radio" id="Giants" name="fav_team" value="Giants">
+                                        <label for="Giants">New York Giants</label><br>
+                                        <input type="radio" id="Eagles" name="fav_team" value="Eagles">
+                                        <label for="Eagles">Philadelphia Eagles</label><br>
+                                        <input type="radio" id="Commanders" name="fav_team" value="Commanders">
+                                        <label for="Commanders">Washington Commanders</label><br>
+                                        <li class="dropdown-header">NFC North</li>
+                                        <input type="radio" id="Bears" name="fav_team" value="Bears">
+                                        <label for="Bears">Chicago Bears</label><br>
+                                        <input type="radio" id="Lions" name="fav_team" value="Lions">
+                                        <label for="Lions">Detroit Lions</label><br>
+                                        <input type="radio" id="Packers" name="fav_team" value="Packers">
+                                        <label for="Packers">Green Bay Packers</label><br>
+                                        <input type="radio" id="Vikings" name="fav_team" value="Vikings">
+                                        <label for="Vikings">Minnesota Vikings</label><br>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <li class="dropdown-header">NFC South</li>
+                                        <input type="radio" id="Falcons" name="fav_team" value="Falcons">
+                                        <label for="Falcons">Atlanta Falcons</label><br>
+                                        <input type="radio" id="Panthers" name="fav_team" value="Panthers">
+                                        <label for="Panthers">Carolina Panthers</label><br>
+                                        <input type="radio" id="Saints" name="fav_team" value="Saints">
+                                        <label for="Saints">New Orleans Saints</label><br>
+                                        <input type="radio" id="Buccaneers" name="fav_team" value="Buccaneers">
+                                        <label for="Buccaneers">Tampa Bay Buccaneers</label><br>
+                                        <li class="dropdown-header">NFC West</li>
+                                        <input type="radio" id="Cardinals" name="fav_team" value="Cardinals">
+                                        <label for="Cardinals">Arizona Cardinals</label><br>
+                                        <input type="radio" id="Rams" name="fav_team" value="Rams">
+                                        <label for="Rams">Los Angeles Rams</label><br>
+                                        <input type="radio" id="49ers" name="fav_team" value="49ers">
+                                        <label for="49ers">San Francisco 49ers</label><br>
+                                        <input type="radio" id="Seahawks" name="fav_team" value="Seahawks">
+                                        <label for="Seahawks">Seattle Seahawks</label><br>
+                                    </div>
+                                    </div>
+                                    <div class="form-group row justify-content-center">
+                                        <div class="col-lg-8">
                                             <input type="submit"
                                                    class="btn btn-primary btn-lg btn-block"
                                                    value="Save Preferences">
