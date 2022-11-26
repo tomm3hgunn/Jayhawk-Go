@@ -1,6 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User  # added for preferences
 
 # Create your models here.
+
+
 class Spreads(models.Model):
     """Model of SQL table to hold Spreads data"""
 
@@ -16,7 +19,8 @@ class Spreads(models.Model):
     awayPrice = models.IntegerField()
 
     class Meta:
-        unique_together = ("homeTeam", "awayTeam", "bookmaker", "commenceTime", "lastUpdated")
+        unique_together = ("homeTeam", "awayTeam", "bookmaker",
+                           "commenceTime", "lastUpdated")
 
     def __str__(self):
         return (
@@ -44,7 +48,8 @@ class Totals(models.Model):
     underPrice = models.IntegerField()
 
     class Meta:
-        unique_together = ("homeTeam", "awayTeam", "bookmaker", "commenceTime", "lastUpdated")
+        unique_together = ("homeTeam", "awayTeam", "bookmaker",
+                           "commenceTime", "lastUpdated")
 
     def __str__(self):
         return (
@@ -70,7 +75,8 @@ class Moneyline(models.Model):
     awayPrice = models.IntegerField()
 
     class Meta:
-        unique_together = ("homeTeam", "awayTeam", "bookmaker", "commenceTime", "lastUpdated")
+        unique_together = ("homeTeam", "awayTeam", "bookmaker",
+                           "commenceTime", "lastUpdated")
 
     def __str__(self):
         return (
@@ -81,3 +87,12 @@ class Moneyline(models.Model):
             + " "
             + self.lastUpdated.strftime("%m/%d/%Y, %H:%M:%S")
         )
+
+
+class Preferences(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    favteam = models.CharField(max_length=200, default='NULL')
+
+    def __str__(self):
+        return self.user.username
