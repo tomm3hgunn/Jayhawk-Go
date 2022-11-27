@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(Spreads)
 admin.site.register(Totals)
 admin.site.register(Moneyline)
+admin.site.register(Preferences)
