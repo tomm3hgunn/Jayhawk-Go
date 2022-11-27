@@ -4,9 +4,17 @@ from .models import *
 from .services import *
 from oddsAndEvents.models import *
 
+# added for preferences
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+from django.contrib import messages
+from .forms import UpdatePreferencesForm
+
+
 # Create your views here.
 
-books = ["fanduel", "barstoolsportsbook", "williamhill(us)", "draftkings", "betmgm"]
+books = ["fanduel", "barstoolsportsbook",
+         "williamhill(us)", "draftkings", "betmgm"]
 
 
 def index(request):
@@ -29,7 +37,8 @@ def matches(request):
     # sortTotalsJson = sortTotals()
     # sortMoneylineJson = sortMoneyline()
 
-    variables = {"spreads": spreadsJson, "totals": totalsJson, "moneyline": moneylineJson, "books": books}
+    variables = {"spreads": spreadsJson, "totals": totalsJson,
+                 "moneyline": moneylineJson, "books": books}
     return render(request, "sportz/matches.html", variables)
 
 
@@ -45,6 +54,26 @@ def contact(request):
     return render(request, "sportz/contact.html")
 
 
+# https://dev.to/earthcomfy/django-user-profile-3hik
+# https://dev.to/earthcomfy/django-update-user-profile-33ho
+@login_required
+def preferences(request):
+    if request.method == 'POST':
+        preferences_form = UpdatePreferencesForm(
+            request.POST, instance=request.user.preferences)
+
+        if preferences_form.is_valid():
+            preferences_form.save()
+            messages.success(
+                request, 'Your preferences were updated successfully')
+            return redirect(to='preferences')
+    else:
+        preferences_form = UpdatePreferencesForm(
+            instance=request.user.preferences)
+
+    return render(request, "sportz/preferences.html", {'preferences_form': preferences_form})
+
+
 def matchup(request, homeTeam, awayTeam):
     spreadsJson = oddSpreads()
     totalsJson = oddTotals()
@@ -55,26 +84,44 @@ def matchup(request, homeTeam, awayTeam):
     # y axis is points or price
     # line graph
     # line for each book (5)
-    labelsSpread = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
-    labelsTotal = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
-    labelsMoneyline = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
-    homePoints = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
-    awayPoints = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
-    homePrice = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
-    awayPrice = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
-    overPoints = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
-    underPoints = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
-    overPrice = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
-    underPrice = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
-    homePriceMoneyline = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
-    awayPriceMoneyline = {"FanDuel": [], "BarstoolSportsbook": [], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
+    labelsSpread = {"FanDuel": [], "BarstoolSportsbook": [],
+                    "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
+    labelsTotal = {"FanDuel": [], "BarstoolSportsbook": [],
+                   "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
+    labelsMoneyline = {"FanDuel": [], "BarstoolSportsbook": [],
+                       "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
+    homePoints = {"FanDuel": [], "BarstoolSportsbook": [],
+                  "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
+    awayPoints = {"FanDuel": [], "BarstoolSportsbook": [],
+                  "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
+    homePrice = {"FanDuel": [], "BarstoolSportsbook": [],
+                 "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
+    awayPrice = {"FanDuel": [], "BarstoolSportsbook": [],
+                 "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
+    overPoints = {"FanDuel": [], "BarstoolSportsbook": [],
+                  "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
+    underPoints = {"FanDuel": [], "BarstoolSportsbook": [],
+                   "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
+    overPrice = {"FanDuel": [], "BarstoolSportsbook": [],
+                 "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
+    underPrice = {"FanDuel": [], "BarstoolSportsbook": [],
+                  "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
+    homePriceMoneyline = {"FanDuel": [], "BarstoolSportsbook": [
+    ], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
+    awayPriceMoneyline = {"FanDuel": [], "BarstoolSportsbook": [
+    ], "CaesersSportsbook": [], "DraftKings": [], "BetMGM": []}
 
-    #* Spreads
-    fanduelData = Spreads.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="FanDuel")
-    barstoolData = Spreads.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="Barstool Sportsbook")
-    williamHillData = Spreads.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="Caesars Sportsbook")
-    draftKingsData = Spreads.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="DraftKings")
-    betMgmData = Spreads.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="BetMGM")
+    # * Spreads
+    fanduelData = Spreads.objects.filter(
+        homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="FanDuel")
+    barstoolData = Spreads.objects.filter(
+        homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="Barstool Sportsbook")
+    williamHillData = Spreads.objects.filter(
+        homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="Caesars Sportsbook")
+    draftKingsData = Spreads.objects.filter(
+        homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="DraftKings")
+    betMgmData = Spreads.objects.filter(
+        homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="BetMGM")
     for entry in fanduelData:
         labelsSpread["FanDuel"].append(entry.lastUpdated)
         homePoints["FanDuel"].append(entry.homePoints)
@@ -106,12 +153,17 @@ def matchup(request, homeTeam, awayTeam):
         homePrice["BetMGM"].append(entry.homePrice)
         awayPrice["BetMGM"].append(entry.awayPrice)
 
-    #* Totals
-    fanduelData = Totals.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="FanDuel")
-    barstoolData = Totals.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="Barstool Sportsbook")
-    williamHillData = Totals.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="Caesars Sportsbook")
-    draftKingsData = Totals.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="DraftKings")
-    betMgmData = Totals.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="BetMGM")
+    # * Totals
+    fanduelData = Totals.objects.filter(
+        homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="FanDuel")
+    barstoolData = Totals.objects.filter(
+        homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="Barstool Sportsbook")
+    williamHillData = Totals.objects.filter(
+        homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="Caesars Sportsbook")
+    draftKingsData = Totals.objects.filter(
+        homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="DraftKings")
+    betMgmData = Totals.objects.filter(
+        homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="BetMGM")
     for entry in fanduelData:
         labelsTotal["FanDuel"].append(entry.lastUpdated)
         overPoints["FanDuel"].append(entry.overPoints)
@@ -143,12 +195,17 @@ def matchup(request, homeTeam, awayTeam):
         overPrice["BetMGM"].append(entry.overPrice)
         underPrice["BetMGM"].append(entry.underPrice)
 
-    #* Moneyline
-    fanduelData = Moneyline.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="FanDuel")
-    barstoolData = Moneyline.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="Barstool Sportsbook")
-    williamHillData = Moneyline.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="Caesars Sportsbook")
-    draftKingsData = Moneyline.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="DraftKings")
-    betMgmData = Moneyline.objects.filter(homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="BetMGM")
+    # * Moneyline
+    fanduelData = Moneyline.objects.filter(
+        homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="FanDuel")
+    barstoolData = Moneyline.objects.filter(
+        homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="Barstool Sportsbook")
+    williamHillData = Moneyline.objects.filter(
+        homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="Caesars Sportsbook")
+    draftKingsData = Moneyline.objects.filter(
+        homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="DraftKings")
+    betMgmData = Moneyline.objects.filter(
+        homeTeam=homeTeam, awayTeam=awayTeam, bookmaker="BetMGM")
     for entry in fanduelData:
         labelsMoneyline["FanDuel"].append(entry.lastUpdated)
         homePriceMoneyline["FanDuel"].append(entry.homePrice)

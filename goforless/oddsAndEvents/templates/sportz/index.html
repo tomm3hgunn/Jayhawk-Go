@@ -81,12 +81,8 @@
                                 <li class="has-children active">
                                     <a href="#">Welcome, {{ user.username }} !</a>
                                     <ul class="dropdown arrow-top">
-                                        <li>
-                                            <a href="#">Preferences</a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'account_logout' %}">Log Out</a>
-                                        </li>
+                                    <li><a href="preferences">Preferences</a></li>
+                                    <li><a href="{% url 'account_logout' %}">Log Out</a></li>
                                     </ul>
                                 </li>
                             {% else %}
@@ -293,6 +289,73 @@
                                                     </div>
                                                 </div>
                                                 {% comment %}* API DISPLAY FOR UPCOMING GAMES {% endcomment %}
+                                                {% if user.is_authenticated and user.preferences.favteam != 'NULL' %}
+                                                    {% for entry in scores %}
+                                                        {% if user.preferences.favteam == entry.away_team or user.preferences.favteam == entry.home_team %}
+                                                            {% if entry.completed %}
+                                                                {% comment %}* DO NOTHING HERE {% endcomment %}
+                                                            {% else %}
+                                                                {% comment %} url goes to dynamic page with home and away team {% endcomment %}
+                                                                <a href="{% url 'matchup' entry.home_team entry.away_team %}">
+                                                                    <div class="row bg-white align-items-center ml-0 mr-0 py-2 match-entry">
+                                                                        {% comment %}* AWAY TEAM INFO {% endcomment %}
+                                                                        <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
+                                                                            <div class="text-center text-lg-left">
+                                                                                <div class="d-block d-lg-flex align-items-center">
+                                                                                    <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
+                                                                                        {% comment %}* AWAY TEAM IMAGE{% endcomment %}
+                                                                                        {% with teamImage=entry.away_team|cut:" "|add:".png" %}
+                                                                                            {% with imagePath="images/"|add:teamImage %}
+                                                                                                <img src={% static imagePath %} alt="Image" class="img-fluid">
+                                                                                            {% endwith %}
+                                                                                        {% endwith %}
+                                                                                    </div>
+                                                                                    <div class="text">
+                                                                                        <h3 class="h5 mb-0 text-black">
+                                                                                            {% comment %}* AWAY TEAM {% endcomment %}
+                                                                                            {{ entry.away_team }}
+                                                                                        </h3>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        {% comment %}* HOME TEAM INFO {% endcomment %}
+                                                                        <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
+                                                                            <div class="text-center text-lg-left py-2">
+                                                                                <div class="d-block d-lg-flex align-items-center">
+                                                                                    <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
+                                                                                        {% comment %}* AT SYMBOL {% endcomment %}
+                                                                                        <img src={% static "images/atSymbol.png" %} alt="Image" class="img-fluid">
+                                                                                    </div>
+                                                                                    <div class="image image-small text-center mb-3 mb-lg-0 mr-lg-3">
+                                                                                        {% comment %}* HOME IMAGE {% endcomment %}
+                                                                                        {% with teamImage=entry.home_team|cut:" "|add:".png" %}
+                                                                                            {% with imagePath="images/"|add:teamImage %}
+                                                                                                <img src={% static imagePath %} alt="Image" class="img-fluid">
+                                                                                            {% endwith %}
+                                                                                        {% endwith %}
+                                                                                    </div>
+                                                                                    <div class="text">
+                                                                                        <h3 class="h5 mb-0 text-black">
+                                                                                            {% comment %}* HOME TEAM {% endcomment %}
+                                                                                            {{ entry.home_team }}
+                                                                                        </h3>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        {% comment %}* GAME TIME INFO {% endcomment %}
+                                                                        <div class="col-md-4 col-lg-4 text-center mb-4 mb-lg-0">
+                                                                            {% comment %}* DATE {% endcomment %}
+                                                                            <span class="text-uppercase small country text-muted">Starts: {{ entry.commence_time|formatDate }} CST</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    {% comment %}* CUSTOM ROW END {% endcomment %}
+                                                                </a>
+                                                            {% endif %}
+                                                        {% endif %}  
+                                                    {% endfor %}
+                                                {% endif %}
                                                 {% for entry in scores %}
                                                     {% if entry.completed %}
                                                         {% comment %}* DO NOTHING HERE {% endcomment %}
