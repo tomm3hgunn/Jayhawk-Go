@@ -8,11 +8,13 @@ artifact documents/JHWKGO-Gr1-08.pdf
 
 ## Getting Started
 
-Clone the GitHub repo and update the .env file. 
+Clone the GitHub repo
 
 ```bash
 $ git clone https://github.com/tomm3hgunn/Jayhawk-Go.git
 ```
+Then create and modify the .env file according to the shared directions.
+
 Next, navigate to the app directory, install the requirements, perform any necessary migrations, and then run the local server.
 
 ```bash
