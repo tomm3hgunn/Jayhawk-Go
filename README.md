@@ -21,4 +21,4 @@ $ pip install -r requirements.txt
 $ python manage.py migrate
 $ python manage.py runserver
 ```
-Finally, in a web browser go to 127:0:0:1/oddsAndEvents/index to nagivate the web application.
+Finally, in a web browser go to http://127.0.0.1:8000/oddsAndEvents/index to nagivate the web application.
